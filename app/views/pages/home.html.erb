@@ -1,0 +1,13 @@
+<h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="list">
+
+  <% Channel.all.each do |x| %>
+      <div class="channelname">
+        <h2 class="title"><%= x.name%></h2>
+        <p class="description"><%= x.description%></p>
+      </div>
+    <%end%>
+
+</div>

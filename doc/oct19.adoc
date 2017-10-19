@@ -1,0 +1,60 @@
+= Meeting October 19,2017
+
+UH Sugarland, FBC Library
+
+== Topics Discussed
+
+[%hardbreaks]
+postgresql
+ERD
+Page layout
+Main/home page
+html iteration
+
+== PostGreSQL
+
+We each set up PostGreSQL on our machines, then spent a large portion of time to conenct it to the project
+
+We had a hard time figuring out why our rails was throwing errors when we switched over to postgresql
+
+Turns out, all we have to do is read the errors and it will tell us where it's wrong.
+
+We got it running and have finally reached the starting point.
+
+NOTE: READ THE ERRORS
+
+== ERD
+
+Removed the "homepage" scaffold because there's just one homepage and all it does is display all the channels
+
+== Home page
+
+generated a controller, added it to the routes.
+
+== HTML iteration
+
+[%hardbreaks]
+Each line needs the `<% %>`. In pseudocode
+`for each channel`
+`display the name`
+`display the description`
+`end`
+
+[%hardbreaks]
+which ended up with 
+`    <% Channel.all.each do |x| %>`
+`      <div class="channelname">`
+`        <h2 class="title"><%= x.name%></h2>`
+`        <p class="description"><%= x.description%></p>`
+`      </div>`
+`    <%end%>`
+
+=== TO DO:
+
+* make the "title" link to the appropriate channel page
+* make rails generate the channel page for each channel
+* make users
+* make threads
+* make comments
+* make admins
+* make bossman corporate head analytics

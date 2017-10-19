@@ -1,0 +1,28 @@
+= Meeting Octobre 12, 2017
+
+== Topics Discussed
+
+[.lead]
+Entities +
+ERD +
+Pages +
+User functions and roles +
+Team name +
+
+== Entities/pages
+
+=== Home
+
+Home Page. Shows list of channels.
+
+=== Channel
+
+Channel Page. Looks similar to the Home page but has the list of threads instead
+
+=== Thread
+
+Thread Page. Looks similar to Channel and Home page, but shows comments and their replies instead.
+
+=== Users
+
+A user can create, edit, delete their posts/threads.
