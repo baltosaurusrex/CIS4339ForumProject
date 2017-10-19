@@ -13,8 +13,25 @@
  *= require_tree .
  *= require_self
  */
+body{
+    padding: 10px 10px;
+}
 .header{
     border-color: gray;
     border-left-style: dashed;
     padding: 1em 1em;
+}
+.channelname{
+    background-color: lightblue;
+    border-color: blue;
+    border-style: solid;
+    margin: 10px 10px;
+    padding: 10px 10px;
+
+}
+.channelname.title{
+    text-align: left;
+}
+.channelname.description{
+    text-align: right;
 }
