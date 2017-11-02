@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
+  def new
+    @user = User.new
   end
+
+  def create
+  end
+end
 
   # GET /users/1
   # GET /users/1.json
