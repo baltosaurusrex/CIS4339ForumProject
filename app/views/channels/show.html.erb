@@ -9,6 +9,11 @@
   <strong>Description:</strong>
   <%= @channel.description %>
 </p>
+<%= link_to 'New Post',new_post_path%>
 
 <%= link_to 'Edit', edit_channel_path(@channel) %> |
 <%= link_to 'Back', channels_path %>
+
+<% @channel.posts.each do |x|%>
+  <h2><%= x.name%></h2>
+<%end%>
