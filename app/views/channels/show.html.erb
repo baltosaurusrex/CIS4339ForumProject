@@ -11,5 +11,26 @@
 </p>
 <%= link_to 'New Post',new_post_path%>
 
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th colspan="5"></th>
+  </tr>
+</thead>
+
+  <tbody>
+<% @channel.posts.each do |post| %>
+    <tr>
+      <td><%= post.name %></td>
+      <td><%= post.content %></td>
+      <td><%= link_to 'Show', post %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+<% end %>
+</tbody>
+
 <%= link_to 'Edit', edit_channel_path(@channel) %> |
 <%= link_to 'Back', channels_path %>

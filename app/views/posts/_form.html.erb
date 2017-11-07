@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :channel_id%>
+    <%= form.collection_select :channel_id, Channel.all, :id, :name%>
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :post_name %>
   </div>
