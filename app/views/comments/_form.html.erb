@@ -11,11 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :post_id %>
-    <%= form.text_field :post_id, id: :comment_post_id %>
-  </div>
-
+  <%= form.hidden_field :post_id%>
+    
   <div class="field">
     <%= form.label :user %>
     <%= form.text_field :user, id: :comment_user %>

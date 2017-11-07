@@ -53,3 +53,13 @@ td{
   padding: 5px;
   margin: 5px;
 }
+a:hover{
+  background: transparent;
+  color: black;
+}
+a:click{
+  color:blue;
+}
+a:visited{
+  color:purple;
+}

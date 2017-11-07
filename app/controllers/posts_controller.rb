@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(channel_id: params[:channel_id])
   end
 
   # GET /posts/1/edit

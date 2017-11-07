@@ -11,10 +11,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :channel_id%>
-    <%= form.collection_select :channel_id, Channel.all, :id, :name%>
-  </div>
+<%= form.hidden_field :channel_id%>
 
   <div class="field">
     <%= form.label :name %>
