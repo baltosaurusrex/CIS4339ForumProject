@@ -1,0 +1,25 @@
+= Meeting Nov 2,2017
+
+Dulce Tapioca, First Colony Mall
+
+== Topics Discussed
+
+[%hardbreaks]
+New group member
+Delegation
+
+progress
+
+== New Group member
+
+We received a 4th group member, Leela.
+
+== Delegation
+
+Leela is adding users to the system and getting the log out/in function.
+
+Waleed is getting the application to import users via CSV
+
+Raphael is getting the channels, threads, and comments to work.
+
+Edward is also working on threads and helping Leela

@@ -12,6 +12,54 @@
  *
  *= require_tree .
  *= require_self
+
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.header{
+ margin:10px;
+  padding:10px;
+}
+.maincontentbodyrender{
+  padding:10px;
+  margin:20px;
+}
+.list .channelname{
+  margin: 10px;
+  padding:5px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: darkred;
+  background-color: palevioletred;
+  color: white;
+}
+.list .channelname h2 a{
+  color:#fff;
+  font-weight: bold;
+}
+.list .channelname h2 a:hover{
+  color:#fff;
+  background-color: transparent;
+  font-weight: bold;
+}
+tbody{
+  border-style: groove;
+  border-width: 3px;
+}
+td{
+  border-style: solid;
+  border-width: 1px;
+  padding: 5px;
+  margin: 5px;
+}
+a:hover{
+  background: transparent;
+  color: black;
+}
+a:click{
+  color:blue;
+}
+a:visited{
+  color:purple;
+}
