@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
-<%= favicon_link_tag asset_path('uh_Icon.png'), :rel => 'icon', :type =>  'image/png' %>
+<head>
+  <title>JumpNews</title>
+  <%= csrf_meta_tags %>
 
-  <head>
-    <title>WERIntranet</title>
-    <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<body class="container">
+<main>
+  <% if flash[:notice] %>
+      <p class="alert alert-info">
+        <%= flash[:notice] %>
+      </p>
+  <% end %>
 
-  <body>
-  <%= render 'layouts/header' %>
-    <%= yield %>
-  </body>
+  <%= yield %>
+</main>
+</body>
 </html>

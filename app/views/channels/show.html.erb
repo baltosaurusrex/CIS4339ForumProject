@@ -9,11 +9,27 @@
   <strong>Description:</strong>
   <%= @channel.description %>
 </p>
-<%= link_to 'New Post',new_post_path%>
+<%= link_to 'New Post',new_post_path(channel_id: @channel)%>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th colspan="5"></th>
+  </tr>
+</thead>
+
+  <tbody>
+<% @channel.posts.each do |post| %>
+    <tr>
+      <td><%= link_to post.name, post_path(post) %></td>
+      <td><%= post.content %></td>
+      <td><%= link_to 'Edit', edit_post_path(post) %></td>
+      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+<% end %>
+</tbody>
 
 <%= link_to 'Edit', edit_channel_path(@channel) %> |
-<%= link_to 'Back', channels_path %>
-
-<% #@channel.posts.each do |x|%>
-  <h2><%=# x.name%></h2>
-<%#end%>
+<%= link_to 'Back', root_path %>

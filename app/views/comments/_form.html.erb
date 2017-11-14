@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= form.hidden_field :post_id%>
+    
   <div class="field">
     <%= form.label :user %>
     <%= form.text_field :user, id: :comment_user %>
