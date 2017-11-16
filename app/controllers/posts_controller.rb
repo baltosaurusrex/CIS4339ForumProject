@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   def show
   end
 
+
   # GET /posts/new
   def new
     @post = Post.new(channel_id: params[:channel_id])
@@ -24,7 +25,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    #@post = Post.new(post_params)
+    @post.user = current_user
+    @post = current_user.posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
