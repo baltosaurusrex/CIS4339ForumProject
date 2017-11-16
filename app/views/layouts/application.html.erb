@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JumpNews</title>
+  <title>WERL'd Intranet Forum</title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
@@ -15,7 +15,7 @@
         <%= flash[:notice] %>
       </p>
   <% end %>
-
+  <%= render 'layouts/header'%>
   <%= yield %>
 </main>
 </body>
