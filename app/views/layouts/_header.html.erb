@@ -1,9 +1,15 @@
 <html>
 
 <div class="header">
-  <h1>WER Intranet messageboard</h1>
-  <h3><%= link_to 'Home', root_path %></h3>
-  <h3><%= link_to 'Login', new_user_session_path%></h3>
-  <h3><%= link_to 'Sign up', new_user_registration_path%></h3>
+  <h1><%= link_to 'WER Intranet messageboard', root_path%></h1>
+  <h3 class="header-link"><%= link_to 'Home', root_path %></h3>
+  <h3 class="header-link">
+
+        <%= link_to 'Logout', destroy_user_session_path, method: :destroy%>
+
+        <%= link_to 'Login', new_user_session_path%>
+
+  </h3>
+  <h3 class="header-link"><%= link_to 'Sign up', new_user_registration_path%></h3>
 </div>
 </html>
