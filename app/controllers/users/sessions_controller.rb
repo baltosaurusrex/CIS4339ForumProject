@@ -1,6 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-  #to before_action :authenticate_user!
-  before_action :configure_sign_in_params, only: [:create]
+  # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   def new
@@ -17,7 +16,7 @@ class Users::SessionsController < Devise::SessionsController
     super
   end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

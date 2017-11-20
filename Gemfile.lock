@@ -59,10 +59,6 @@ GEM
       xpath (~> 2.0)
     childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
-    clearance (1.15.1)
-      bcrypt
-      email_validator (~> 1.4)
-      rails (>= 3.1)
     cocoon (1.2.11)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -79,8 +75,6 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
-    email_validator (1.6.0)
-      activemodel
     erubi (1.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -208,7 +202,6 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   capybara (~> 2.13)
-  clearance (~> 1.15.1)
   cocoon
   coffee-rails (~> 4.2)
   devise
