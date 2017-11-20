@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get 'pages/home'
 
-
   devise_for :users, controllers: {
       sessions: 'users/sessions'
   }
@@ -13,13 +12,11 @@ Rails.application.routes.draw do
   resources :posts
   resources :channels
   resources :sessions, only: [:new, :create]
-  resources :users, only: [:new, :create]
-  resources :sessions, only: [:new, :create] do
-  delete :destroy, on: :collection
+#  resources :users, only: [:new, :create]
+ # resources :sessions, only: [:new, :create] do
+ # delete :destroy, on: :collection
 
-
-
-  end
+ # end
   end
 
 
