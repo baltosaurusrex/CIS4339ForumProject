@@ -11,8 +11,10 @@
     </div>
   <% end %>
 
+<%= current_user.id%>
+
   <%= form.hidden_field :channel_id%>
-  <%= form.hidden_field :user_id%>
+  <%= form.hidden_field :user_idcurrent_user.id%>
 
   <div class="field">
     <%= form.label :name %>
