@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'pages/index'
 
+  post 'posts/search' => 'posts#search', as: 'search_posts'
+  get 'all_post_updates/:id' => 'post_updates#index', as: 'all_post_updates'
+  get 'post_updates/new/:id' => 'post_updates#new', as: 'new_post_update'
+
+  post 'channels/search' => 'channels#search', as: 'search_channels'
+  get 'all_channel_updates/:id' => 'chanel_updates#index', as: 'all_channel_updates'
+  get 'channel_updates/new/:id' => 'channel_updates#new', as: 'new_channel_update'
+
   get 'pages/home'
 
   devise_for :users, controllers: {
