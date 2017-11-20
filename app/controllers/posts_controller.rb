@@ -1,6 +1,18 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+
+  helper_method :search
+
+  def search
+   #debugger
+    @q = "%#{params[:query]}%"
+    @posts = Post.where("name ILIKE ? or content ILIKE ?", @q, @q)
+   # @categories = Category.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct
+    #@npos = Npo.all
+    render 'index'
+  end
+
   # GET /posts
   # GET /posts.json
   def index
@@ -26,8 +38,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    # @post.user_id = current_user.id
-    # @post = current_user.posts.build(params[:post])
+    #@post.user = current_user
+    #@post = current_user.posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
@@ -74,4 +86,7 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:channel_id,:name, :content,:user_id)
     end
+
+
 end
+
