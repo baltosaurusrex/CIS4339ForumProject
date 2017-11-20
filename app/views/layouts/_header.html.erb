@@ -1,13 +1,15 @@
 <html>
 
-<div class="header">
+<div class="header" data-no-turbolink>
   <h1><%= link_to 'WER Intranet messageboard', root_path%></h1>
 
   <ul class="hmenu">
-    <%= link_to 'Home', root_path %>
-
-    <%= render 'devise/menu/login_items' %>
+    <li>
+      <%= link_to 'Home', root_path %>
+    </li>
+      <%= render 'devise/menu/login_items' %>
   </ul>
+  <%= current_user%>
 
 </div>
 </html>

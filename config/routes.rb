@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-
+  root to: 'pages#home'
   get 'pages/index'
 
   get 'pages/home'
 
-  root to: 'pages#home'
+
   devise_for :users, controllers: {
       sessions: 'users/sessions'
   }
