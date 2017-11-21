@@ -11,7 +11,15 @@
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
+
+
+      <%if !@channel_id.present?%>
       <li class="active"><%= link_to "New Channel!",new_channel_path%></a></li>
+          <elsif @channel_id.present? %>
+            <li class="active"><%= link_to 'New Post',new_post_path(channel_id: @channel)%></a</li>
+          </elsif>
+
+          <%end%>
       <li><a href="#">links</a></li>
       <li class="dropdown">
         <!-- <li><a href="#">Action</a></li>
@@ -25,16 +33,16 @@
 
     </ul>
 
-    <%if @channel_id = 0%>
-      <%= form_tag search_posts_path do %>
+    <%if !@channel_id.present? %>
+      <%= form_tag search_channels_path do %>
         <input Class="search full-width" id="searchbar" name="query" placeholder="Search Channel" type="text" autocomplete="off">
       <%end%>
 
-    <% elsif @channel_id > 0 %>
+    <% elsif @channel_id.present? && @channel_id >0%>
         <%= form_tag search_posts_path do%>
             <input Class="search full-width" id="searchbar" name="query" placeholder="Search Post" type="text" autocomplete="off">
         <%end%>
-    <% elsif @post_id >= 1 %>
+    <% elsif @post_id.present? %>
         <%= form_tag search_posts_path do%>
           <input Class="search full-width" id="searchbar" name="query" placeholder="Search comments" type="text" autocomplete="off">
         <%end%>

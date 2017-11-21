@@ -12,7 +12,7 @@
   </thead>
 
   <tbody>
-    <% @channel.all.each do |channel| %>
+    <% Channel.all.each do |channel| %>
       <tr>
         <td><%= channel.name %></td>
         <td><%= channel.description %></td>
