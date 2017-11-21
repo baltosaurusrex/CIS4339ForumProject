@@ -18,11 +18,14 @@
       <%if current_page?(root_path)%>
         <li class="active">
           <%= link_to "New Channel!",new_channel_path%>
+          <%=@channel_id.present?%>
         </li>
+
 
       <%elsif !current_page?(root_path) && !current_page?(posts_path) && !current_page?(new_channel_path) && !current_page?(new_post_path)%>
         <li class="active">
           <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
+          <%=@channel_id.present?%>
         </li>
       <%else%>
           <p></p>
@@ -42,7 +45,7 @@
     <% elsif @post_id.present? %>
         <%= form_tag search_posts_path do%>
           <input Class="search full-width" id="searchbar" name="query" placeholder="Search comments" type="text" autocomplete="off">
-        <%end%>
+        <%end%>x
 
     <%end%>
 
