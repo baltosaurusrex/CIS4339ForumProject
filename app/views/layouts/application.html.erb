@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WERL'd Intranet Forum</title>
+  <title>WERL'd</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
-
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
 </head>
+<body>
 
-<body class="container">
-<main>
-  <% if flash[:notice] %>
-      <p class="alert alert-info">
-        <%= flash[:notice] %>
-      </p>
-  <% end %>
-  <%= render 'layouts/header'%>
-  <%= yield %>
-</main>
+<%= yield %>
+
 </body>
-</html>
+</html>bun

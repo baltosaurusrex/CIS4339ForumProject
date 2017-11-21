@@ -65,3 +65,8 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3.6'
 gem "clearance", '~> 1.15.1'
+
+
+group :development do
+  gem 'rails_layout'
+end
