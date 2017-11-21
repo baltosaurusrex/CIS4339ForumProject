@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   get 'all_channel_updates/:id' => 'chanel_updates#index', as: 'all_channel_updates'
   get 'channel_updates/new/:id' => 'channel_updates#new', as: 'new_channel_update'
 
+
+  post 'comments/search' => 'comments#search', as: 'search_comments'
+  get 'all_comment_updates/:id' => 'comment_updates#index', as: 'all_comment_updates'
+  get 'comment_updates/new/:id' => 'comment_updates#new', as: 'new_comment_update'
   get 'pages/home'
 
   devise_for :users, controllers: {
