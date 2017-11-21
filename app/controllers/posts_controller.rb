@@ -8,7 +8,7 @@ class PostsController < ApplicationController
    #debugger
     @q = "%#{params[:query]}%"
     @posts = Post.where("name ILIKE ? or content ILIKE ?", @q, @q)
-   # @categories = Category.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct
+    @channels = Channel.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct
     #@npos = Npo.all
     render 'index'
   end
@@ -17,6 +17,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    #@posts = Post.all(channel_id: params[:channel_id])
   end
 
   # GET /posts/1
