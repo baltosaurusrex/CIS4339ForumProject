@@ -16,6 +16,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  BM                     :boolean
+#  confirmation_token     :string(128)
+#  remember_token         :string(128)
 #
 
 class User < ApplicationRecord
@@ -24,6 +26,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #has_many :posts
+  has_many :posts
   has_many :comments
 end

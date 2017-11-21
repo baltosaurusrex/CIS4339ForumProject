@@ -14,6 +14,6 @@
 class Post < ApplicationRecord
   has_many :comment, :dependent => :destroy
   belongs_to :channel
-  #belongs_to :user
+  belongs_to :user
 
 end

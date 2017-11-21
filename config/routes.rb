@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'channels#index'
   get 'pages/index'
 
   post 'posts/search' => 'posts#search', as: 'search_posts'

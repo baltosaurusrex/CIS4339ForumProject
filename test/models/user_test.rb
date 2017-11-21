@@ -16,6 +16,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  BM                     :boolean
+#  confirmation_token     :string(128)
+#  remember_token         :string(128)
 #
 
 require 'test_helper'
