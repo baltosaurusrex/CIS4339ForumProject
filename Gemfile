@@ -34,6 +34,8 @@ gem 'devise'
   #adding cocoon, cause this is actually really useful
 gem 'cocoon'
 gem 'jquery-rails'
+
+gem 'smarter_csv'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do

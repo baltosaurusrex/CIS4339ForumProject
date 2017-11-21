@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :users do
+    collection { post :import}
+  end
+  get 'users/index'
+
+  get 'users/import'
+
   root to: 'channels#index'
   get 'pages/index'
 
