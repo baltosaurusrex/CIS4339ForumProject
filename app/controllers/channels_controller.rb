@@ -8,7 +8,6 @@ class ChannelsController < ApplicationController
     #debugger
     @q = "%#{params[:query]}%"
 
-
     @channel = Channel.where("name ILIKE ? or description ILIKE ?", @q, @q)
 
     # @categories = Category.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct

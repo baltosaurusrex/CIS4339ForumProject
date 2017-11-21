@@ -11,25 +11,19 @@
 </p>
 <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
 
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th colspan="5"></th>
-  </tr>
-</thead>
 
-  <tbody>
+
+  <div class="list">
 <% @channel.posts.each do |post| %>
-    <tr>
-      <td><%= link_to post.name, post_path(post) %></td>
-      <td><%= post.content %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+    <div class="channelname">
+      <h2 class="title">Title|<%= link_to post.name, post_path(post) %></h2>
+      <h3>User|<%= User.find(post.user_id).email%></h3>
+      <p class="description"><%= post.content %></p>
+      <p><%= link_to 'Edit', edit_post_path(post) %></p>
+      <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    </div>
 <% end %>
-</tbody>
+</div>
 
 <%= link_to 'Edit', edit_channel_path(@channel) %> |
 <%= link_to 'Back', root_path %>

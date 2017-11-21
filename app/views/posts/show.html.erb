@@ -14,6 +14,7 @@
   <%= link_to 'Reply', new_comment_path(post_id: @post)%>
   <% @post.comment.each do |comment| %>
       <div class="comments">
+        <%= comment.user_id %>
         <%= comment.content %>
         <%= link_to 'Edit', edit_comment_path(comment) %>
         <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>

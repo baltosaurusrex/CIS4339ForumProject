@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!--<title>WERL'd Intranet Forum</title>-->
-  <%= csrf_meta_tags %>
+  <head>
+    <!--<title>WERL'd Intranet Forum</title>-->
+    <%= csrf_meta_tags %>
 
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
-</head>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+  </head>
 
-<body class="container">
-<main>
+  <body class="container">
+    <main>
 
-  <%= render partial: "devise/shared/navbar" %>
-  <%= link_to 'Logout', destroy_user_session_path%>
-  <div class="container">
-    <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+      <%= render partial: "devise/shared/navbar" %>
 
-    <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
-  </div>
-  <%= yield %>
-</main>
-</body>
+      <div class="container">
+        <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+
+        <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+      </div>
+
+
+      <%= yield %>
+
+    </main>
+  </body>
 </html>
