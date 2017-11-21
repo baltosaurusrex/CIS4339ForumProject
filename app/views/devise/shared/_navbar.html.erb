@@ -1,3 +1,5 @@
+<%= channels = "http://localhost:3000/channels/" + @channel_id + "/App.config"%>
+
 <nav class="navbar navbar-default" role="navigation">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -13,11 +15,13 @@
     <ul class="nav navbar-nav">
 
 
-      <%if !@channel_id.present?%>
-      <li class="active"><%= link_to "New Channel!",new_channel_path%></a></li>
-          <elsif @channel_id.present? %>
-            <li class="active"><%= link_to 'New Post',new_post_path(channel_id: @channel)%></a</li>
-          </elsif>
+      <%if current_page?(root_path)%>
+      <li class="active"><%= link_to "New Channel!",new_channel_path%></li>
+
+
+          <%elsif current_page?(channels)%>
+            <li class="active"><%= link_to 'New Post',new_post_path(channel_id: @channel)%></li>
+
 
           <%end%>
       <li><a href="#">links</a></li>
