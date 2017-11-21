@@ -20,7 +20,7 @@
           <%= link_to "New Channel!",new_channel_path%>
         </li>
 
-      <%elsif current_page?(action: 'show',controller: 'channels')%>
+      <%elsif !current_page?(root_path) && !current_page?(posts_path) && !current_page?(new_channel_path && !current_page?(new_posts_path)%>
         <li class="active">
           <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
         </li>
