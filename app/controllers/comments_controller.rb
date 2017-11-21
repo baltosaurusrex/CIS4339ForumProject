@@ -3,6 +3,20 @@ class CommentsController < ApplicationController
 
   # GET /comments
   # GET /comments.json
+
+  helper_method :search
+
+  def search
+    #debugger
+    @q = "%#{params[:query]}%"
+
+    @comment= Comment.where("name ILIKE ? or description ILIKE ?", @q, @q)
+
+    # @categories = Category.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct
+    #@npos = Npo.all
+    render 'index'
+  end
+
   def index
     @comments = Comment.all
   end
