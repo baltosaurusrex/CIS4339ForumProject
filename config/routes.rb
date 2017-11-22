@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :users do
-    collection { post :import}
-  end
+
   get 'users/index'
 
   get 'users/import'
@@ -26,6 +24,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
       sessions: 'users/sessions'
   }
+  resources :users do
+    collection { post :import}
+  end
 
   resources :comments
   resources :posts

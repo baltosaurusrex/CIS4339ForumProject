@@ -3,24 +3,27 @@
 <h2>
   <%= @post.name %>
 </h2>
-
+<p><%= User.find(@post.user_id).email%></p>
 <p class="post-content">
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
 </div>
 
-<div>
+<div class="comment-body" >
   <%= link_to 'Reply', new_comment_path(post_id: @post)%>
   <% @post.comment.each do |comment| %>
-      <div class="comments">
-        <%= comment.user_id %>
-        <%= comment.content %>
-        <%= link_to 'Edit', edit_comment_path(comment) %>
-        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="comment">
+        <p><%= User.find(comment.user_id).email %></p>
+        <p><%= comment.content %></p>
+        <% if current_user.id == comment.user_id%>
+            <%= link_to 'Edit', edit_comment_path(comment) %>
+            <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
       </div>
   <% end %>
+  <%= link_to 'Reply', new_comment_path(post_id: @post)%>
 </div>
-
+<!--Add Board Manager-->
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', channel_path(@post.channel_id) %>

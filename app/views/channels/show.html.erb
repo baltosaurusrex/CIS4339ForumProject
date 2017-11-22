@@ -19,8 +19,10 @@
       <h2 class="title">Title|<%= link_to post.name, post_path(post) %></h2>
       <h3>User|<%= User.find(post.user_id).email%></h3>
       <p class="description"><%= post.content %></p>
-      <p><%= link_to 'Edit', edit_post_path(post) %></p>
-      <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <% if current_user.id == post.user_id%>
+        <p><%= link_to 'Edit', edit_post_path(post) %></p>
+        <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <%end%>
     </div>
 <% end %>
 </div>

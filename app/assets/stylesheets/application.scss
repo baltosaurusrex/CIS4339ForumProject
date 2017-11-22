@@ -18,6 +18,19 @@
 @import "bootstrap";
 @import "styles";
 
+.post-title{
+  border-color: red;
+  border-style: solid;
+}
+.comment-body{
+  border-color: teal;
+  border-style: solid;
+}
+.comment{
+  border-color: forestgreen;
+  border-style: solid;
+}
+
 ul.hmenu {
   list-style: none;
   margin: 0 0 2em;
