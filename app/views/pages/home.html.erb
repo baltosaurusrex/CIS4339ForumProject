@@ -4,7 +4,7 @@
 
 <div class="list">
 
-  <% @channel.each do |x| %>
+  <% Channel.all.each do |x| %>
       <div class="channelname">
         <h2 class="title"><%= link_to x.name, channel_path(x.id)%></h2>
         <p class="description"><%= x.description%></p>

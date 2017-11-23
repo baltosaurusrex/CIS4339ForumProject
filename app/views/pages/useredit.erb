@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<div class="body">
+  <h1><%= link_to current_user.email, edit_user_registration_path%></h1>
+
+  <% @user.posts.each do |x|%>
+  <%end%>
+
+  <% @user.comments.each do |x|%>
+  <%end%>
+
+</div>

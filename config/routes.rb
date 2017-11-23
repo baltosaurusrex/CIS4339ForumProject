@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'users/import'
 
-  root to: 'channels#index'
+  root to: 'pages#home'
   get 'pages/index'
 
   post 'posts/search' => 'posts#search', as: 'search_posts'
