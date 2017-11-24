@@ -1,10 +1,12 @@
 
 <%= @user.email %>
 <div id="topics">
+
   <h2>Posts</h2>
+
   <% @user.posts.each do |p| %>
       <strong>
-      <%= link_to p.name, posts_path(p) %>
+        <%= link_to p.name, p %>
       </strong>
       <p>
         <%= p.content%>
@@ -16,9 +18,9 @@
       <strong>
         <%= link_to Post.find(c.post_id).name , post_path(c.post_id)%>
       </strong>
-        <p>
-          <%= c.content %>
-        </p>
+      <p>
+        <%= c.content %>
+      </p>
   <% end %>
 
 </div>
