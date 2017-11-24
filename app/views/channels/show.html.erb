@@ -17,7 +17,7 @@
 <% @channel.posts.each do |post| %>
     <div class="channelname">
       <h2 class="title">Title|<%= link_to post.name, post_path(post) %></h2>
-      <h3>User|<%= User.find(post.user_id).email%></h3>
+      <h3>User|<%= link_to User.find(post.user_id).email, user_path(post.user_id)%></h3>
       <p class="description"><%= post.content %></p>
       <% if current_user.id == post.user_id%>
         <p><%= link_to 'Edit', edit_post_path(post) %></p>

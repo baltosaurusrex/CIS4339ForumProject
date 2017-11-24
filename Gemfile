@@ -36,7 +36,6 @@ gem 'cocoon'
 
 gem 'jquery-rails'
 gem 'cancancan', '~> 2.0'
-gem 'smarter_csv'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
