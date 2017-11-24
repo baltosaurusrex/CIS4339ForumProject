@@ -1,0 +1,7 @@
+<% title 'user: ' + @user.email %>
+<div id="topics">
+  <strong>topics</strong>
+  <% @user.posts.each do |p| %>
+      <%= link_to posts.name, posts_path(p) %>
+  <% end %>
+</div>

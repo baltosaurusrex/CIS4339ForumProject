@@ -33,9 +33,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
   #adding cocoon, cause this is actually really useful
 gem 'cocoon'
-gem 'jquery-rails'
 
+gem 'jquery-rails'
+gem 'cancancan', '~> 2.0'
 gem 'smarter_csv'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do

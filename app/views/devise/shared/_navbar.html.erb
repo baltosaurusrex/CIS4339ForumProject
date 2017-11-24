@@ -58,7 +58,7 @@
 
       <% if user_signed_in? %>
           <li>
-            <%= link_to current_user.email, 'pages/useredit'%>
+            <%= link_to current_user.email, '#'%>
           </li>
           <li>
             <%= link_to "Logout", destroy_user_session_path%>

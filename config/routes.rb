@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get 'users/index'
-
   get 'users/import'
 
   root to: 'pages#home'
@@ -32,7 +31,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :channels
   resources :sessions, only: [:new, :create]
-#  resources :users, only: [:new, :create]
+ # resources :users, only: [:new, :create]
  # resources :sessions, only: [:new, :create] do
  # delete :destroy, on: :collection
 
