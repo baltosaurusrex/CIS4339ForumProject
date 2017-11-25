@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WERL'd</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <!--<title>WERL'd Intranet Forum</title>-->
   <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
 </head>
-<body>
 
-<%= yield %>
+<body class="container">
+<main>
 
+  <%= render partial: "devise/shared/navbar" %>
+
+  <div class="container">
+    <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+
+    <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+  </div>
+
+
+  <%= yield %>
+
+</main>
 </body>
-</html>bun
+</html>
