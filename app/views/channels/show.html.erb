@@ -9,9 +9,8 @@
   <strong>Description:</strong>
   <%= @channel.description %>
 </p>
+
 <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
-
-
 
   <div class="list">
     <%= line_chart @channel.posts.group_by_day(:created_at).count %>
