@@ -34,6 +34,9 @@ gem 'devise'
   #adding cocoon, cause this is actually really useful
 gem 'cocoon'
 
+gem 'chartkick'
+gem 'groupdate'
+
 gem 'jquery-rails'
 gem 'cancancan', '~> 2.0'
 

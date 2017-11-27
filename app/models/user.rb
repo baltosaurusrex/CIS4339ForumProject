@@ -24,11 +24,20 @@ class User < ApplicationRecord
 
   require 'csv'
 
+
   def self.import(file)
-    CSV.foreach(file.path, headers:true) do |row|
-      User.create! row.to_hash
+
+    #if params[:file].content_type == 'text/csv'
+    if !params[ :file ].nil?
+
+      CSV.foreach(file.path, headers: true) do |row|
+        User.create! row.to_hash
+
     end
-  end
+
+    end
+    end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

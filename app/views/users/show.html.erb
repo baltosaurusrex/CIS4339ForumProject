@@ -1,6 +1,11 @@
 
 <%= @user.email %>
 <%= link_to "Change Password", edit_user_registration_path(@user) %>
+<div id="Charts">
+  <%= line_chart({ 20.day.ago => 5, 10.day.ago => 10, "2017-010-07 00:00:00 UTC" => 7 })  %>
+  <%= pie_chart [["Football", 10], ["Basketball", 5]] %>
+</div>
+
 <div id="topics">
 
   <h2>Posts</h2>

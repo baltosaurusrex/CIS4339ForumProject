@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'comment_updates/new/:id' => 'comment_updates#new', as: 'new_comment_update'
   get 'pages/home'
 
+
+
   devise_for :users, controllers: {
       sessions: 'users/sessions'
   }
@@ -36,6 +38,11 @@ Rails.application.routes.draw do
  # delete :destroy, on: :collection
 
  # end
+
+  namespace :charts do
+    get "new-users"
+  end
+
   end
 
 
