@@ -3,7 +3,13 @@
 <h2>
   <%= @post.name %>
 </h2>
-<p><%= User.find(@post.user_id).email%></p>
+  <p>
+  <% if User.exists?(id: @post.user_id)%>
+      <%= User.find(@post.user_id).email%>
+  <%else%>
+    [deleted]
+  <%end%>
+        </p>
 <p class="post-content">
   <strong>Content:</strong>
   <%= @post.content %>
@@ -14,9 +20,15 @@
   <%= link_to 'Reply', new_comment_path(post_id: @post)%>
   <% @post.comment.each do |comment| %>
       <div class="comment">
-        <p><%= link_to User.find(comment.user_id).email,user_path(comment.user_id) %></p>j
+        <p>
+          <% if User.exists?(id: comment.user_id)%>
+            <%= link_to User.find(comment.user_id).email,user_path(comment.user_id) %>
+          <%else%>
+            [deleted]
+          <%end%>
+        </p>
         <p><%= comment.content %></p>
-        <% if current_user.id == comment.user_id%>
+        <% if can? :manage, Comment%>
             <%= link_to 'Edit', edit_comment_path(comment) %>
             <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
         <%end%>

@@ -1,7 +1,7 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
-
+  skip_before_action :authenticate_user!, :only => [:index]
   helper_method :search
 
   def search

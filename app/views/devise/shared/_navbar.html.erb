@@ -12,32 +12,32 @@
   </div>
 
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+<!--navbar-->
     <ul class="nav navbar-nav">
 
       <%if controller_name == 'channels' && controller.action_name == 'show'%>
           <li class="active">
             <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
-            <%=!current_page?(search_channels_path)%>
           </li>
 
 
-      <%elsif controller_name == 'channels' || current_page?(root_path)%>
+      <%elsif can? :manage, Channel && controller_name == 'channels' || current_page?(root_path)%>
           <li class="active">
             <%= link_to "New Channel!",new_channel_path%>
-            <%=@channel_id.present?%>
           </li>
       <%else%>
           <p></p>
       <%end%>
 
     </ul>
-
+<!--import-->
+    <%if can? :manage, User%>
     <%= form_tag users_import_path, multipart:true do %>
         <%= file_field_tag :file %>
         <%= submit_tag "Import CVS" %>
         <% end %>
-
+    <% end %>
+<!--search-->
     <%if  controller_name == 'channels' && controller.action_name =='show'%>
         <%= form_tag search_posts_path do%>
             <input Class="search full-width" id="searchbar" name="query" placeholder="Search Post" type="text" autocomplete="off">
@@ -52,10 +52,11 @@
     <%elsif controller_name == 'posts' && controller.action_name == 'show'%>
         <%= form_tag search_posts_path do%>
           <input Class="search full-width" id="searchbar" name="query" placeholder="Search comments" type="text" autocomplete="off">
-        <%end%>x
+        <%end%>
 
     <%end%>
 
+<!--sign in/out-->
     <ul class="navbar-nav navbar-right">
 
       <% if user_signed_in? %>
