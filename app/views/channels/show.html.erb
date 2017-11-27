@@ -14,7 +14,9 @@
 
 
   <div class="list">
+    <%= line_chart @channel.posts.group_by_day(:created_at).count %>
 <% @channel.posts.each do |post| %>
+
     <div class="channelname">
       <h2 class="title">Title|<%= link_to post.name, post_path(post) %></h2>
       <h3>User|

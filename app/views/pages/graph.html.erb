@@ -1,3 +1,3 @@
-<%= line_chart Post.group_by_day(:created_at).count %>
-<%= line_chart Comment.group_by_day(:created_at).count %>
-<%= pie_chart [["Football", 10], ["Basketball", 5]] %>
+<%= line_chart Comment.group_by_day(:created_at).count, colors:['#787669' ] %>
+<%-# pie_chart Post.group(Channel.find(:channel_id).name).count%>
+<%= pie_chart Channel.Posts.joins(:channel_id).group(:title).count%>
