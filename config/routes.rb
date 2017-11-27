@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'users/import'
 
   root to: 'pages#home'
-  get 'pages/index'
+
 
   post 'posts/search' => 'posts#search', as: 'search_posts'
   get 'all_post_updates/:id' => 'post_updates#index', as: 'all_post_updates'
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'all_comment_updates/:id' => 'comment_updates#index', as: 'all_comment_updates'
   get 'comment_updates/new/:id' => 'comment_updates#new', as: 'new_comment_update'
   get 'pages/home'
-
+  get 'pages/graph'
 
 
   devise_for :users, controllers: {

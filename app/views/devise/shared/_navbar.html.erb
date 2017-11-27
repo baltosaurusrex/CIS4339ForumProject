@@ -37,18 +37,17 @@
         <%= submit_tag "Import CVS" %>
         <% end %>
 
-
-          <a href="/graphs">graphs</a>
-
     <% end %>
 
-
+<!--Graphs-->
+    <ul>
+      <%= button_to "Graphs", 'pages/graph'%>
+    </ul>
 <!--search-->
     <%if  controller_name == 'channels' && controller.action_name =='show'%>
         <%= form_tag search_posts_path do%>
             <input Class="search full-width" id="searchbar" name="query" placeholder="Search Post" type="text" autocomplete="off">
         <%end%>
-
 
     <%elsif  controller_name == 'channels'|| current_page?(root_path)%>
         <%= form_tag search_channels_path do %>

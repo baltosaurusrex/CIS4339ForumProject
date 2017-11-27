@@ -7,14 +7,15 @@ class Ability
       user ||= User.new # guest user (not logged in)
       can :read, Channel
       if user.BM?
-        can :manage, :all
         can :access, :rails_admin
         can :dashboard
+        can :manage, :all
       elsif user.CM?
         can :read, :all
       elsif user.user_role?
         can :manage, Post
         can :manage, Comment
+        can :manage, User
       end
 
     # The first argument to `can` is the action you are giving the user
