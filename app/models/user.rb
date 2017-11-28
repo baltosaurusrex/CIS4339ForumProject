@@ -29,13 +29,14 @@ class User < ApplicationRecord
 
   def self.import(file)
 
-    #if params[:file].content_type == 'text/csv'
-    if !params[ :file ].nil?
+    #params[:file].content_type == 'text/csv'
+
+
 
       CSV.foreach(file.path, headers: true) do |row|
         User.create! row.to_hash
 
-    end
+
 
     end
     end
