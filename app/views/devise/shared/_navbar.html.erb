@@ -34,8 +34,8 @@
     <%if can? :manage, User%>
         
     <%= form_tag users_import_path, multipart:true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag "Import CVS" %>
+        <%= file_field_tag :file , :accept => 'text/csv'%>
+        <%= submit_tag "Import CVS"%>
         <% end %>
 
     <% end %>
