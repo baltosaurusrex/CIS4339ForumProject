@@ -19,7 +19,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= link_to Channel.find(post.channel_id).name, channel_path(post.channel_id) %></td>
-        <td><%= link_to post.name, post %></td>
+        <td><%= link_to post.title, post %></td>
         <td><%= post.content %></td>
         <td><%= User.find(post.user_id).email %></td>
 

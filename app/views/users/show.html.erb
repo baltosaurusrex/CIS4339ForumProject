@@ -11,7 +11,7 @@
 
   <% @user.posts.each do |p| %>
       <strong>
-        <%= link_to p.name, p %>
+        <%= link_to p.title, p %>
       </strong>
       <p>
         <%= p.content%>
@@ -21,7 +21,7 @@
   <h2>Comments</h2>
   <% @user.comments.each do |c| %>
       <strong>
-        <%= link_to Post.find(c.post_id).name , post_path(c.post_id)%>
+        <%= link_to Post.find(c.post_id).title , post_path(c.post_id)%>
       </strong>
       <p>
         <%= c.content %>
