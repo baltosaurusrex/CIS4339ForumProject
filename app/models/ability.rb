@@ -8,13 +8,11 @@ class Ability
       can :read, Channel
       if user.BM?
         can :manage, [User, Channel, Post, Comment]
-        #can :access, :rails_admin
-        #can :dashboard
+        can :access, :rails_admin
+        can :dashboard
       elsif user.CM?
         can :read, :all
-        cannot :update, [User, Channel, Post, Comment]
-        cannot :create, [User, Channel, Post, Comment]
-        cannot :delete, [User, Channel, Post, Comment]
+        cannot [:update,:update,:delete], [User, Channel, Post, Comment]
       elsif user.user_role?
         can :manage, Post, user_id: user.id
         can :manage, Comment, user_id: user.id

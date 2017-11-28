@@ -103,8 +103,13 @@
 
         <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
       </div>
+      <%= can? :access, :rails_admin%>
+      <%if can? :access, :rails_admin%>
 
+          <%= link_to "admin",rails_admin_path%>
+      <%end%>
       <%= yield %>
+
 
     </main>
   </body>

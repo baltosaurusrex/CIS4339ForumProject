@@ -9,9 +9,9 @@
   <strong>Description:</strong>
   <%= @channel.description %>
 </p>
-
+<%if can? :create, Post%>
 <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
-
+<%end%>
   <div class="list">
 
 <% @channel.posts.each do |post| %>
@@ -26,13 +26,14 @@
         <%end%>
       </h3>
       <p class="description"><%= post.content %></p>
-      <% if current_user.id == post.user_id%>
+      <% if can? :manage, post%>
         <p><%= link_to 'Edit', edit_post_path(post) %></p>
         <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       <%end%>
     </div>
 <% end %>
 </div>
-
+<%if can? :update, Channel%>
 <%= link_to 'Edit', edit_channel_path(@channel) %> |
+<%end%>
 <%= link_to 'Back', root_path %>

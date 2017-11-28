@@ -9,15 +9,18 @@
   <%else%>
     [deleted]
   <%end%>
-        </p>
-<p class="post-content">
+  </p>
+
+  <p class="post-content">
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
 </div>
 
 <div class="comment-body" >
+  <%if can? :create, Comment%>
   <%= link_to 'Reply', new_comment_path(post_id: @post)%>
+  <%end%>
   <% @post.comment.each do |comment| %>
       <div class="comment">
         <p>
@@ -28,14 +31,18 @@
           <%end%>
         </p>
         <p><%= comment.content %></p>
-        <% if can? :manage, Comment%>
+        <% if can? :manage, comment%>
             <%= link_to 'Edit', edit_comment_path(comment) %>
             <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
         <%end%>
       </div>
   <% end %>
-  <%= link_to 'Reply', new_comment_path(post_id: @post)%>
+  <%if can? :create, Comment%>
+      <%= link_to 'Reply', new_comment_path(post_id: @post)%>
+  <%end%>
 </div>
 <!--Add Board Manager-->
-<%= link_to 'Edit', edit_post_path(@post) %> |
+<%if can? :update, Comment%>
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+<%end%>
 <%= link_to 'Back', channel_path(@post.channel_id) %>
