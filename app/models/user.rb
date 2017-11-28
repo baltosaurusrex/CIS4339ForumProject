@@ -31,13 +31,8 @@ class User < ApplicationRecord
 
     #params[:file].content_type == 'text/csv'
 
-
-
       CSV.foreach(file.path, headers: true) do |row|
         User.create! row.to_hash
-
-
-
     end
     end
 
@@ -48,4 +43,5 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+
 end

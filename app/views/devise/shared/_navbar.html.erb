@@ -32,18 +32,20 @@
     </ul>
 <!--import-->
     <%if can? :manage, User%>
-        
+
     <%= form_tag users_import_path, multipart:true do %>
-        <%= file_field_tag :file , :accept => 'text/csv'%>
+        <%= file_field_tag :file , :accept => 'csv'%>
         <%= submit_tag "Import CVS"%>
         <% end %>
 
     <% end %>
 
 <!--Graphs-->
+    <% if can? :read, :all%>
     <ul>
-      <%= button_to "Graphs", 'http://localhost:3000/pages/graph?' ,:method => :get%>
+      <%= button_to "Graphs", reports_path ,:method => :get%>
     </ul>
+    <%end%>
 <!--search-->
     <%if  controller_name == 'channels' && controller.action_name =='show'%>
         <%= form_tag search_posts_path do%>
