@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def search
    #debugger
     @q = "%#{params[:query]}%"
-    @posts = Post.where("name ILIKE ? or content ILIKE ?", @q, @q)
+    @posts = Post.where("title ILIKE ? or content ILIKE ?", @q, @q)
     #@channels = Channel.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct
     #@npos = Npo.all
     render 'index'
@@ -84,7 +84,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:channel_id,:name, :content,:user_id)
+      params.require(:post).permit(:channel_id,:title, :content,:user_id)
     end
 
 

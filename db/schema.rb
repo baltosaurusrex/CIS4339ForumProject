@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20171127234441) do
     t.boolean "BM"
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
-    t.boolean "CM"
-    t.boolean "user_role"
+    t.boolean "CM", default: false
+    t.boolean "user_role", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_token"], name: "index_users_on_remember_token"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

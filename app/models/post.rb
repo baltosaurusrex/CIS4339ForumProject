@@ -15,5 +15,5 @@ class Post < ApplicationRecord
   has_many :comment, :dependent => :destroy
   belongs_to :channel
   belongs_to :user
-  validates_presence_of :name,:content
+  validates_presence_of :title,:content
 end
