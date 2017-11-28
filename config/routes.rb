@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-
   post 'posts/search' => 'posts#search', as: 'search_posts'
   get 'all_post_updates/:id' => 'post_updates#index', as: 'all_post_updates'
   get 'post_updates/new/:id' => 'post_updates#new', as: 'new_post_update'
@@ -19,8 +18,8 @@ Rails.application.routes.draw do
   get 'all_comment_updates/:id' => 'comment_updates#index', as: 'all_comment_updates'
   get 'comment_updates/new/:id' => 'comment_updates#new', as: 'new_comment_update'
   get 'pages/home'
-  get 'pages/graph'
 
+  get 'graph' => 'graphs#show', as: 'reports'
 
   devise_for :users, controllers: {
       sessions: 'users/sessions'
@@ -36,10 +35,6 @@ Rails.application.routes.draw do
  # resources :users, only: [:new, :create]
  # resources :sessions, only: [:new, :create] do
  # delete :destroy, on: :collection
-
- # end
-
-
 
   end
 

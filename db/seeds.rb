@@ -9,3 +9,7 @@
 User.create! :email => "admin@intra.net", :password => "password", :password_confirmation => "password", :BM => true, :CM => false, :user_role => false
 User.create! :email => "bossman@intra.net", :password => "password", :password_confirmation => "password", :BM => false, :CM => true, :user_role => false
 User.create! :email => "joe@intra.net", :password => "password", :password_confirmation => "password", :BM => false, :CM => false, :user_role => true
+
+Channel.create! :name => "Marketing", :description => "Marketing Department"
+Channel.create! :name => "Sales", :description => "Sales Department"
+Channel.create! :name => "Development", :description => "Dev Department"
