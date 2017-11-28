@@ -53,9 +53,11 @@
           <% end %>
 
           <!--Graphs-->
-          <li class="waves-effect waves-light btn">
-            <%= button_to "Graphs", 'http://localhost:3000/pages/graph?' ,:method => :get%>
-          </li>
+          <% if can? :read, :all%>
+              <li class="waves-effect waves-light btn">
+                <%= button_to "Graphs", reports_path ,:method => :get%>
+              </li>
+          <%end%>
           <!--search--><li>
           <%if  controller_name == 'channels' && controller.action_name =='show'%>
               <%= form_tag search_posts_path do%>
@@ -103,11 +105,7 @@
 
         <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
       </div>
-      <%= can? :access, :rails_admin%>
-      <%if can? :access, :rails_admin%>
 
-          <%= link_to "admin",rails_admin_path%>
-      <%end%>
       <%= yield %>
 
 

@@ -9,13 +9,13 @@
         <li class="waves-effect waves-light btn">
           <%= link_to "WERL'd Home", root_url,class: "navbar-brand" %>
         </li>
-        <%if controller_name == 'channels' && controller.action_name == 'show'%>
+        <%if can? :create, Post && controller_name == 'channels' && controller.action_name == 'show'%>
             <li class="active">
               <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
             </li>
 
 
-        <%elsif can? :manage, Channel && controller_name == 'channels' || current_page?(root_path)%>
+        <%elsif can? :create, Channel && controller_name == 'channels' || current_page?(root_path)%>
             <li class="waves-effect waves-light btn">
               <%= link_to "New Channel!",new_channel_path%>
             </li>
@@ -26,7 +26,6 @@
         <!--import-->
         <%if can? :manage, User%>
 
-
             <%= form_tag users_import_path, multipart:true do %>
                 <li class="waves-effect waves-light btn"> <%= file_field_tag :file , :accept => 'csv'%></li>
 
@@ -36,9 +35,11 @@
         <% end %>
 
         <!--Graphs-->
+        <% if can? :read, :all%>
         <li class="waves-effect waves-light btn">
-          <%= button_to "Graphs", 'http://localhost:3000/pages/graph?' ,:method => :get%>
+          <%= button_to "Graphs", reports_path ,:method => :get%>
         </li>
+        <%end%>
         <!--search--><li>
         <%if  controller_name == 'channels' && controller.action_name =='show'%>
             <%= form_tag search_posts_path do%>
