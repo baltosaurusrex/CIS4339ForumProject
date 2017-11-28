@@ -7,8 +7,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+
   def import
+  if params[:file ].nil?
+    redirect_to root_url, alert: "CSV file not there"
+  else
+
+
     User.import(params[:file])
-    redirect_to root_url, notice: "Activity Data imported!"
+        redirect_to root_url, notice: "CSV Imported"
   end
+    end
 end

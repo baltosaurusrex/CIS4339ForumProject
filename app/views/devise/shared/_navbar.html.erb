@@ -32,6 +32,7 @@
     </ul>
 <!--import-->
     <%if can? :manage, User%>
+        
     <%= form_tag users_import_path, multipart:true do %>
         <%= file_field_tag :file %>
         <%= submit_tag "Import CVS" %>
