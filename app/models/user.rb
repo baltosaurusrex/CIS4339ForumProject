@@ -18,6 +18,8 @@
 #  BM                     :boolean
 #  confirmation_token     :string(128)
 #  remember_token         :string(128)
+#  CM                     :boolean
+#  user_role              :boolean
 #
 
 class User < ApplicationRecord
