@@ -23,6 +23,7 @@ class ChannelsController < ApplicationController
   # GET /channels/1
   # GET /channels/1.json
   def show
+
   end
 
   # GET /channels/new

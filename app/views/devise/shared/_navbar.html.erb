@@ -41,7 +41,7 @@
 
 <!--Graphs-->
     <ul>
-      <%= button_to "Graphs", 'pages/graph'%>
+      <%= button_to "Graphs", 'pages/graph' ,:method => :get%>
     </ul>
 <!--search-->
     <%if  controller_name == 'channels' && controller.action_name =='show'%>

@@ -39,9 +39,7 @@ Rails.application.routes.draw do
 
  # end
 
-  namespace :charts do
-    get "new-users"
-  end
+
 
   end
 
