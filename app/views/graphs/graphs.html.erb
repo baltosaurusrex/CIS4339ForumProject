@@ -1,5 +1,8 @@
+<h1>Posts per day across all channels</h1>
 <%= line_chart Post.group_by_day(:created_at).count, colors:['#787669' ] %>
 
-<%= pie_chart Post.joins(:channel).group(:name).count%>
+<h1>Posts per channel per day</h1>
+<%= line_chart Post.joins(:channel).group(:name).group_by_day('posts.created_at').count%>
 
-<%-# line_chart Post.joins(:channel).group(:name).group_by_day(:created_at).count%>
+<h1>Posts per user, per day</h1>
+<%= line_chart Post.joins(:user).group(:email).group_by_day('posts.created_at').count%>

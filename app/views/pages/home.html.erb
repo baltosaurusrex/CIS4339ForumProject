@@ -15,6 +15,7 @@
 </div>
 
 <br>
-
+<%if can? :create, Channel%>
 <%= link_to 'New Channel', new_channel_path %>
+  <%end%>
 </div>
