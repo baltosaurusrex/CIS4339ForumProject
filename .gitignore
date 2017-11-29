@@ -24,3 +24,6 @@
 
 # ignore workspace
 /.idea
+
+# ignore werlintranet
+/werlintranet
