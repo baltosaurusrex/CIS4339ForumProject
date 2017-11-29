@@ -15,9 +15,27 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  BM                     :boolean
+#  confirmation_token     :string(128)
+#  remember_token         :string(128)
+#  CM                     :boolean
+#  user_role              :boolean
 #
 
 class User < ApplicationRecord
+
+  require 'csv'
+
+
+  def self.import(file)
+
+    #params[:file].content_type == 'text/csv'
+
+      CSV.foreach(file.path, headers: true) do |row|
+        User.create! row.to_hash
+    end
+    end
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -25,4 +43,5 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+
 end

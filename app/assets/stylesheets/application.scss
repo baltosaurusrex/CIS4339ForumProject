@@ -17,8 +17,38 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "styles";
+@import "materialize";
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 
+.nav {
+
+}
+.post-title{
+  border-color: red;
+  border-style: solid;
+}
+.comment-body{
+  border-color: teal;
+  border-style: solid;
+}
+.comment{
+  border-color: forestgreen;
+  border-style: solid;
+}
+
+ul.hmenu {
+  list-style: none;
+  margin: 0 0 2em;
+  padding: 0;
+}
+
+ul.hmenu li {
+  display: inline;
+}
 .header{
  margin:10px;
   padding:10px;
@@ -72,3 +102,4 @@ a:click{
 a:visited{
   color:purple;
 }
+

@@ -33,7 +33,16 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
   #adding cocoon, cause this is actually really useful
 gem 'cocoon'
+
+gem 'chartkick'
+gem 'groupdate'
+
 gem 'jquery-rails'
+gem 'cancancan', '~> 2.0'
+
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin', '>= 1.0.0.rc'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
@@ -64,9 +73,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3.6'
-gem "clearance", '~> 1.15.1'
 
-
-group :development do
-  gem 'rails_layout'
-end
+gem 'materialize-sass'
+gem 'material_icons'
+gem 'sass-rails', '~> 5.0'

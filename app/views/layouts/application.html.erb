@@ -1,27 +1,114 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <!--<title>WERL'd Intranet Forum</title>-->
-  <%= csrf_meta_tags %>
-
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
-</head>
-
-<body class="container">
-<main>
-
-  <%= render partial: "devise/shared/navbar" %>
-
-  <div class="container">
-    <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
-
-    <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
-  </div>
 
 
-  <%= yield %>
 
-</main>
-</body>
+  <head>
+    <!--<title>WERL'd Intranet Forum</title>-->
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
+  </head>
+
+  <body>
+  <!-- Dropdown Structure -->
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li class="divider"></li>
+    <li><a href="#!">three</a></li>
+  </ul>
+
+    <nav>
+      <div class="nav-wrapper">
+        <ul class="right hide-on-med-and-down">
+          <li class="waves-effect waves-light btn">
+            <%= link_to "WERL'd Home", root_url,class: "navbar-brand" %>
+          </li>
+          <%if controller_name == 'channels' && controller.action_name == 'show'%>
+              <li class="active">
+                <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
+              </li>
+
+
+          <%elsif can? :manage, Channel && controller_name == 'channels' || current_page?(root_path)%>
+              <li class="waves-effect waves-light btn">
+                <%= link_to "New Channel!",new_channel_path%>
+              </li>
+          <%else%>
+              <p></p>
+          <%end%>
+
+          <!--import-->
+          <%if can? :manage, User%>
+
+
+              <%= form_tag users_import_path, multipart:true do %>
+                  <li class="waves-effect waves-light btn"> <%= file_field_tag :file , :accept => 'csv'%></li>
+
+                  <li class="waves-effect waves-light btn"><%= submit_tag "Import CVS"%></li>
+              <% end %>
+
+          <% end %>
+
+          <!--Graphs-->
+          <% if can? :read, :all%>
+              <li class="waves-effect waves-light btn">
+                <%= button_to "Graphs", reports_path ,:method => :get%>
+              </li>
+          <%end%>
+          <!--search--><li>
+          <%if  controller_name == 'channels' && controller.action_name =='show'%>
+              <%= form_tag search_posts_path do%>
+                  <input Class="search full-width" id="searchbar" name="query" placeholder="Search Post" type="text" autocomplete="off">
+              <%end%>
+
+          <%elsif  controller_name == 'channels'|| current_page?(root_path)%>
+              <%= form_tag search_channels_path do %>
+                  <input Class="search full-width" id="searchbar" name="query" placeholder="Search Channel" type="text" autocomplete="off">
+              <%end%>
+
+          <%elsif controller_name == 'posts' && controller.action_name == 'show'%>
+              <%= form_tag search_posts_path do%>
+                  <input Class="search full-width" id="searchbar" name="query" placeholder="Search comments" type="text" autocomplete="off">
+              <%end%>
+
+          <%end%>
+        </li>
+          <!--sign in/out-->
+
+          <% if user_signed_in? %>
+              <li class="waves-effect waves-light btn">
+                <%= link_to current_user.email, user_path(current_user.id)%>
+              </li>
+              <li class="waves-effect waves-light btn">
+                <%= link_to "Logout", destroy_user_session_path%>
+              </li>
+          <%else %>
+              <li class="waves-effect waves-light btn">
+                <%= link_to "Sign Up", new_user_registration_path %>
+              </li>
+              <li class="waves-effect waves-light btn">
+                <%= link_to "Login", new_user_session_path %>
+              </li>
+          <%end %>
+
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+
+      <div class="container">
+        <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+
+        <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+      </div>
+
+      <%= yield %>
+
+
+    </main>
+  </body>
 </html>

@@ -1,6 +1,19 @@
 class ChannelsController < ApplicationController
   before_action :set_channel, only: [:show, :edit, :update, :destroy]
 
+  skip_before_action :authenticate_user!, :only => [:index]
+  helper_method :search
+
+  def search
+    #debugger
+    @q = "%#{params[:query]}%"
+
+    @channel = Channel.where("name ILIKE ? or description ILIKE ?", @q, @q)
+
+    # @categories = Category.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct
+    #@npos = Npo.all
+    render 'index'
+  end
   # GET /channels
   # GET /channels.json
   def index
@@ -10,6 +23,7 @@ class ChannelsController < ApplicationController
   # GET /channels/1
   # GET /channels/1.json
   def show
+
   end
 
   # GET /channels/new

@@ -1,8 +1,21 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
   # GET /comments
   # GET /comments.json
+
+  helper_method :search
+
+  def search
+    #debugger
+    @q = "%#{params[:query]}%"
+
+    @comment= Comment.where("name ILIKE ? or description ILIKE ?", @q, @q)
+
+    # @categories = Category.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct
+    #@npos = Npo.all
+    render 'index'
+  end
+
   def index
     @comments = Comment.all
   end
@@ -14,7 +27,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = Comment.new(post_id: params[:post_id])
+    @comment = Comment.new(post_id: params[:post_id], user_id: params[:user_id])
   end
 
   # GET /comments/1/edit
@@ -69,6 +82,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:post_id,:user, :content)
+      params.require(:comment).permit(:post_id,:user_id, :content)
     end
 end

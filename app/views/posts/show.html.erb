@@ -1,25 +1,48 @@
 <p id="notice"><%= notice %></p>
 <div class="post-title">
 <h2>
-  <%= @post.name %>
+  <%= @post.title %>
 </h2>
+  <p>
+  <% if User.exists?(id: @post.user_id)%>
+      <%= User.find(@post.user_id).email%>
+  <%else%>
+    [deleted]
+  <%end%>
+  </p>
 
-<p class="post-content">
+  <p class="post-content">
   <strong>Content:</strong>
   <%= @post.content %>
 </p>
 </div>
 
-<div>
+<div class="comment-body" >
+  <%if can? :create, Comment%>
   <%= link_to 'Reply', new_comment_path(post_id: @post)%>
+  <%end%>
   <% @post.comment.each do |comment| %>
-      <div class="comments">
-        <%= comment.content %>
-        <%= link_to 'Edit', edit_comment_path(comment) %>
-        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="comment">
+        <p>
+          <% if User.exists?(id: comment.user_id)%>
+            <%= link_to User.find(comment.user_id).email,user_path(comment.user_id) %>
+          <%else%>
+            [deleted]
+          <%end%>
+        </p>
+        <p><%= comment.content %></p>
+        <% if can? :manage, comment%>
+            <%= link_to 'Edit', edit_comment_path(comment) %>
+            <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
       </div>
   <% end %>
+  <%if can? :create, Comment%>
+      <%= link_to 'Reply', new_comment_path(post_id: @post)%>
+  <%end%>
 </div>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<!--Add Board Manager-->
+<%if can? :update, Comment%>
+    <%= link_to 'Edit', edit_post_path(@post) %> |
+<%end%>
+<%= link_to 'Back', channel_path(@post.channel_id) %>

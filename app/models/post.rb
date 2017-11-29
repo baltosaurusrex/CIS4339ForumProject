@@ -3,7 +3,7 @@
 # Table name: posts
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  title      :string
 #  content    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,5 +15,5 @@ class Post < ApplicationRecord
   has_many :comment, :dependent => :destroy
   belongs_to :channel
   belongs_to :user
-
+  validates_presence_of :title,:content
 end

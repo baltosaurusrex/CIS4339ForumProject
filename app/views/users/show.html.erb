@@ -1,0 +1,31 @@
+
+<%= @user.email %>
+<%= link_to "Change Password", edit_user_registration_path(@user) %>
+<div id="Charts">
+
+</div>
+
+<div id="topics">
+
+  <h2>Posts</h2>
+
+  <% @user.posts.each do |p| %>
+      <strong>
+        <%= link_to p.title, p %>
+      </strong>
+      <p>
+        <%= p.content%>
+      </p>
+  <% end %>
+
+  <h2>Comments</h2>
+  <% @user.comments.each do |c| %>
+      <strong>
+        <%= link_to Post.find(c.post_id).title , post_path(c.post_id)%>
+      </strong>
+      <p>
+        <%= c.content %>
+      </p>
+  <% end %>
+
+</div>

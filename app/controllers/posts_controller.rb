@@ -1,10 +1,22 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  helper_method :search
+
+  def search
+   #debugger
+    @q = "%#{params[:query]}%"
+    @posts = Post.where("title ILIKE ? or content ILIKE ?", @q, @q)
+    #@channels = Channel.joins(:posts).where(:posts => {:id => @posts.map{|x| x.id}}).distinct
+    #@npos = Npo.all
+    render 'index'
+  end
+
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.all
+    #@posts = Post.all(channel_id: params[:channel_id])
   end
 
   # GET /posts/1
@@ -12,9 +24,10 @@ class PostsController < ApplicationController
   def show
   end
 
+
   # GET /posts/new
   def new
-    @post = Post.new(channel_id: params[:channel_id])
+    @post = Post.new(channel_id: params[:channel_id],user_id: params[:user_id])
   end
 
   # GET /posts/1/edit
@@ -25,6 +38,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    #@post.user = current_user
+    #@post = current_user.posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
@@ -69,6 +84,9 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:channel_id,:name, :content,:user_id)
+      params.require(:post).permit(:channel_id,:title, :content,:user_id)
     end
+
+
 end
+
