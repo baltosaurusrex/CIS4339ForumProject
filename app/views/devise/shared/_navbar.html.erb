@@ -34,12 +34,7 @@
 
         <% end %>
 
-        <!--Graphs-->
-        <% if can? :read, :all%>
-        <li class="waves-effect waves-light btn">
-          <%= button_to "Graphs", reports_path ,:method => :get%>
-        </li>
-        <%end%>
+
 
         <!--search--><li>
         <%if  controller_name == 'channels' && controller.action_name =='show'%>
@@ -69,9 +64,6 @@
               <%= link_to "Logout", destroy_user_session_path%>
             </li>
         <%else %>
-            <li class="waves-effect waves-light btn">
-              <%= link_to "Sign Up", new_user_registration_path %>
-            </li>
             <li class="waves-effect waves-light btn">
               <%= link_to "Login", new_user_session_path %>
             </li>

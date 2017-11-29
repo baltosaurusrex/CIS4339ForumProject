@@ -10,17 +10,51 @@
         <%= button_to "Admin", rails_admin_path ,:method => :get%>
       </li>
   <%end%>
-  <% Channel.all.each do |x| %>
-      <div class="channelname">
-        <h2 class="title"><%= link_to x.name, channel_path(x.id)%></h2>
-        <p class="description"><%= x.description%></p>
-      </div>
+
+  <%if can? :create, Channel%>
+      <li class="waves-effect waves-light btn">
+        <%= link_to 'New Channel', new_channel_path %></li>
+  <%end%>
+  <!--Graphs-->
+  <% if can? :read, :all%>
+      <li class="waves-effect waves-light btn">
+        <%= button_to "Graphs", reports_path ,:method => :get%>
+      </li>
   <%end%>
 
+ <div>
+
+  <% Channel.all.each do |x| %>
+
+
+
+
+       <div class ="cardContraints">
+         <div class="row">
+           <div class="col s12 m6">
+             <div class="card">
+               <div class="card-image">
+                 <img src="images/uh_Icon.png">
+                 <span class="card-title"><%=x.name%></span>
+                 <a class="btn-floating halfway-fab waves-effect waves-light red" ><i class="material-icons">add</i></a>
+               </div>
+               <div class="card-content">
+                 <p class="description"><%= x.description%></p>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+
+  <%end%>
+
+
+
+
+
+ </div>
 </div>
 
 <br>
-<%if can? :create, Channel%>
-<%= link_to 'New Channel', new_channel_path %>
-  <%end%>
+
 </div>
