@@ -4,7 +4,12 @@
 
 
 <div class="list">
-
+  <!--railsadmin-->
+  <% if can? :manage, User%>
+      <li class="waves-effect waves-light btn">
+        <%= button_to "Admin", rails_admin_path ,:method => :get%>
+      </li>
+  <%end%>
   <% Channel.all.each do |x| %>
       <div class="channelname">
         <h2 class="title"><%= link_to x.name, channel_path(x.id)%></h2>
