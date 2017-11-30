@@ -1,16 +1,77 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>Channels</h1>
 
-<h1>Channels</h1>
 
-<div class="list">
+  <div class="list">
+    <!--railsadmin-->
+    <% if can? :manage, User%>
+        <li class="waves-effect waves-pink btn">
+          <%= button_to "Admin", rails_admin_path ,:method => :get%>
+        </li>
+    <%end%>
 
-  <% @channels.all.each do |x| %>
-      <div class="channelname">
-        <h2 class="title"><%= link_to x.name, channel_path(x.id)%></h2>
-        <p class="description"><%= x.description%></p>
-      </div>
-  <%end%>
+    <%if can? :create, Channel%>
+        <li class="waves-effect waves-pink btn">
+          <%= link_to 'New Channel', new_channel_path %></li>
+    <%end%>
+    <!--Graphs-->
+    <% if can? :read, :all%>
+        <li class="waves-effect waves-pink btn">
+          <%= button_to "Graphs", reports_path ,:method => :get%>
+        </li>
+    <%end%>
+
+    <div>
+
+
+
+      <% Channel.all.each do |x| %>
+
+
+
+
+          <div class ="cardContraints">
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card">
+                  <div class="card-image">
+                    <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
+
+
+                    <span class="card-title"> <li class="waves-effect waves-pink btn blue"><%= link_to x.name, channel_path(x.id)%></li></span>
+                    <a class="btn-floating halfway-fab waves-effect waves-pink red" ><i class="material-icons">add</i></a>
+
+                  </div>
+                  <div class="card-content">
+                    <p class="description"><%= x.description%></p>
+                  </div>
+
+                </div>
+                <%if can? :create, Channel%>
+                    <li class="waves-effect waves-pink btn orange">
+                      <%= link_to 'Delete Channel', x,method: :delete, data: {confirm: 'are you sure?'}%></li>
+                <%end%>
+                <%if can? :update, Channel%>
+                    <li class="waves-effect waves-pink btn orange">
+                      <%= link_to 'Edit Channel', x,method: :edit_channels_path %>
+                    </li>
+                <%end%>
+              </div>
+            </div>
+          </div>
+
+
+
+      <%end%>
+
+
+
+
+
+    </div>
+  </div>
+
+  <br>
 
 </div>
-
-<br>

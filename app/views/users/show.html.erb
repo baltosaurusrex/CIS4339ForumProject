@@ -1,6 +1,8 @@
-
-<%= @user.email %>
-<%= link_to "Change Password", edit_user_registration_path(@user) %>
+<div class="container">
+<strong>
+<%= @user.email %></strong>
+  <li class="waves-effect waves-pink btn">
+    <%= link_to "Change Password", edit_user_registration_path(@user) %></li>
 <div id="Charts">
 
 </div>
@@ -10,22 +12,55 @@
   <h2>Posts</h2>
 
   <% @user.posts.each do |p| %>
-      <strong>
-        <%= link_to p.title, p %>
-      </strong>
-      <p>
-        <%= p.content%>
-      </p>
+
+      <div class="col s12 m7">
+
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="https://lorempixel.com/100/190/nature/7">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p><%= p.content%></p>
+            </div>
+            <div class="card-action">
+              <a href="#"><%= link_to p.title, p %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
   <% end %>
 
   <h2>Comments</h2>
   <% @user.comments.each do |c| %>
-      <strong>
-        <%= link_to Post.find(c.post_id).title , post_path(c.post_id)%>
-      </strong>
-      <p>
-        <%= c.content %>
-      </p>
+
+
+      <div class="col s12 m7">
+
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="https://lorempixel.com/100/190/nature/5">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p><%= c.content %></p>
+            </div>
+            <div class="card-action">
+              <a href="#"><%= link_to Post.find(c.post_id).title , post_path(c.post_id)%></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
   <% end %>
 
+</div>
 </div>

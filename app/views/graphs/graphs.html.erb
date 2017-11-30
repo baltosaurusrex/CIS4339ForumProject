@@ -1,3 +1,5 @@
+
+<div class="container">
 <h1>Posts per day across all channels</h1>
 <%= line_chart Post.group_by_day(:created_at).count, colors:['#787669' ] %>
 
@@ -6,3 +8,5 @@
 
 <h1>Posts per user, per day</h1>
 <%= line_chart Post.joins(:user).group(:email).group_by_day('posts.created_at').count%>
+
+</div>

@@ -10,16 +10,12 @@
   <%= @channel.description %>
 </p>
 <%if can? :create, Post%>
-    <li class="waves-effect waves-light btn">
+    <li class="waves-effect waves-pink btn">
 <%= link_to 'New Post',new_post_path(channel_id: @channel)%></li>
 <%end%>
 
-  <%if can? :update, Channel%>
-      <li class="waves-effect waves-light btn">
-        <%= link_to 'Edit Channel', edit_channel_path(@channel) %>
-      </li>
-  <%end%>
-  <li class="waves-effect waves-light btn">
+
+  <li class="waves-effect waves-pink btn">
     <%= link_to 'Back', :back %>
   </li>
 
@@ -38,10 +34,11 @@
                   <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
 
 
-                  <span class="card-title">Title|<%= link_to post.title, post_path(post) %></span>
+
+                  <span class="card-title"> <li class="waves-effect waves-pink btn blue">Title|<%= link_to post.title, post_path(post) %></li></span>
 
 
-                  <a class="btn-floating halfway-fab waves-effect waves-light red" ><i class="material-icons">add</i></a>
+                  <a class="btn-floating halfway-fab waves-effect waves-pink red" ><i class="material-icons">add</i></a>
 
                 </div>
                 <div class="card-content">
@@ -59,16 +56,16 @@
 
 
         <% if User.exists?(id: post.user_id)%>
-            <li class="waves-effect waves-light btn"><%= link_to User.find(post.user_id).email, user_path(post.user_id)%></li>
+            <li class="waves-effect waves-pink btn orange"><%= link_to User.find(post.user_id).email, user_path(post.user_id)%></li>
         <%else%>
-            <li class="waves-effect waves-light btn">[ user deleted]</li>
+            <li class="waves-effect waves-pink btn orange">[ user deleted]</li>
         <%end%>
 
 
         <% if can? :manage, post%>
-            <li class="waves-effect waves-light btn">
+            <li class="waves-effect waves-pink btn orange">
               <%= link_to 'Delete Post', post,method: :delete, data: {confirm: 'Are you sure?'}%></li>
-            <li class="waves-effect waves-light btn">
+            <li class="waves-effect waves-pink btn orange">
               <%= link_to 'Edit Post', edit_post_path(post) %></li>
         <%end%>
   <% end %>

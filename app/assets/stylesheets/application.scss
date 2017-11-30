@@ -114,6 +114,13 @@ a:click{
   color:blue;
 }
 a:visited{
-  color:purple;
+  color:blue;
 }
+
+.waves-effect.waves-pink .waves-ripple {
+  /* The alpha value allows the text and background color
+  of the button to still show through. */
+  background-color: rgba(255, 102, 102, 1);
+}
+
 
