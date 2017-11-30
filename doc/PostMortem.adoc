@@ -1,1 +1,5 @@
-Our Assesment of the project
+== Post Mortem
+As a group we enjoyed getting familiar with Rails, although it was challenging a lot of time.
+Group members staying in constant communication with one another made working on the project together
+a smoother process. Given the opportunity, we would working on delegating tasks better amongst one another.
+
