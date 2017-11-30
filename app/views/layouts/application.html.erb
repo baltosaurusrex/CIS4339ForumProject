@@ -21,19 +21,6 @@
 
 
 
-          <%if controller_name == 'channels' && controller.action_name == 'show'%>
-              <li>
-                <%= link_to 'New Post',new_post_path(channel_id: @channel)%>
-              </li>
-
-
-          <%elsif can? :manage, Channel && controller_name == 'channels' || current_page?(root_path)%>
-              <li>
-                <%= link_to "New Channel!",new_channel_path%>
-              </li>
-          <%else%>
-              <p></p>
-          <%end%>
 
 
 

@@ -24,7 +24,9 @@
 
  <div>
 
-  <% Channel.all.each do |x| %>
+
+
+   <% Channel.all.each do |x| %>
 
 
 
@@ -34,17 +36,27 @@
            <div class="col s12 m6">
              <div class="card">
                <div class="card-image">
-                 <img src="images/uh_Icon.png">
-                 <span class="card-title"><%=x.name%></span>
+                 <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
+
+
+                 <span class="card-title"><%= link_to x.name, channel_path(x.id)%></span>
                  <a class="btn-floating halfway-fab waves-effect waves-light red" ><i class="material-icons">add</i></a>
+
                </div>
                <div class="card-content">
                  <p class="description"><%= x.description%></p>
                </div>
+
              </div>
+             <%if can? :create, Channel%>
+                 <li class="waves-effect waves-light btn">
+                   <%= link_to 'Delete Channel', x,method: :delete, data: {confirm: 'are you sure?'}%></li>
+             <%end%>
            </div>
          </div>
        </div>
+
+
 
   <%end%>
 

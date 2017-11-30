@@ -74,12 +74,17 @@ ul.hmenu li {
   color: white;
 }
 .list .cardContraints{
-  margin: 70px;
+  margin: 10px;
   padding:10px;
 
 }
  .list .card .card-title {
+   font-weight: bold;
   color: black;
+}
+ .cardContraints .list {
+  margin: 10px;
+  padding:10px;
 }
 
 .list .channelname h2 a{
