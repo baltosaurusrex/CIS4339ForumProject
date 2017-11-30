@@ -4,17 +4,98 @@
 
 
 <div class="list">
-
-  <% Channel.all.each do |x| %>
-      <div class="channelname">
-        <h2 class="title"><%= link_to x.name, channel_path(x.id)%></h2>
-        <p class="description"><%= x.description%></p>
-      </div>
+  <!--railsadmin-->
+  <% if can? :manage, User%>
+      <li class="waves-effect waves-pink btn">
+        <%= button_to "Admin", rails_admin_path ,:method => :get%>
+      </li>
   <%end%>
+
+  <%if can? :create, Channel%>
+      <li class="waves-effect waves-pink btn">
+        <%= link_to 'New Channel', new_channel_path %></li>
+  <%end%>
+  <!--Graphs-->
+  <% if can? :read, :all%>
+      <li class="waves-effect waves-pink btn">
+        <%= button_to "Graphs", reports_path ,:method => :get%>
+      </li>
+  <%end%>
+
+
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for channels.." title="Type in a name">
+ <div>
+
+
+
+   <% Channel.all.each do |x| %>
+
+
+
+
+       <div class ="cardContraints">
+         <div class="row">
+           <div class="col s12 m6">
+             <div class="card">
+               <div class="card-image">
+                 <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
+
+
+                 <span class="card-title"> <li class="waves-effect waves-pink btn blue"><%= link_to x.name, channel_path(x.id)%></li></span>
+
+                 <a class="btn-floating halfway-fab waves-effect waves-pink red" ><i class="material-icons">add</i></a>
+
+               </div>
+               <div class="card-content">
+                 <p class="description"><%= x.description%></p>
+               </div>
+
+             </div>
+             <%if can? :create, Channel%>
+                 <li class="waves-effect waves-pink btn orange">
+                   <%= link_to 'Delete Channel', x,method: :delete, data: {confirm: 'are you sure?'}%></li>
+             <%end%>
+             <%if can? :update, Channel%>
+                 <li class="waves-effect waves-pink btn orange">
+                   <%= link_to 'Edit Channel', x,method: :edit_channels_path, :method => :get%>
+                 </li>
+             <%end%>
+           </div>
+         </div>
+       </div>
+
+
+
+  <%end%>
+
+
+   <script>
+       function myFunction() {
+           // Declare variables
+           var input, filter, ul, li, a, i;
+           input = document.getElementById('myInput');
+           filter = input.value.toUpperCase();
+           ul = document.getElementById("myUL");
+           li = ul.getElementsByTagName('li');
+
+           // Loop through all list items, and hide those who don't match the search query
+           for (i = 0; i < li.length; i++) {
+               a = li[i].getElementsByTagName("a")[0];
+               if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                   li[i].style.display = "";
+               } else {
+                   li[i].style.display = "none";
+               }
+           }
+       }
+   </script>
+
+
+ </div>
+
 
 </div>
 
 <br>
 
-<%= link_to 'New Channel', new_channel_path %>
 </div>

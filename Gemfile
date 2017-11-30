@@ -40,9 +40,9 @@ gem 'groupdate'
 gem 'jquery-rails'
 gem 'cancancan', '~> 2.0'
 
-gem 'remotipart', github: 'mshibuya/remotipart'
-gem 'rails_admin', '>= 1.0.0.rc'
-
+#gem 'remotipart', github: 'mshibuya/remotipart'
+#gem 'rails_admin', '>= 1.0.0.rc'
+gem 'rails_admin', '~> 1.2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do

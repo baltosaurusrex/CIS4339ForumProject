@@ -1,39 +1,75 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<div class="container">
+
+  <p id="notice"><%= notice %></p>
+<h1>
   <%= @channel.name %>
-</p>
+</h1>
 
 <p>
-  <strong>Description:</strong>
   <%= @channel.description %>
 </p>
 <%if can? :create, Post%>
-<%= link_to 'New Post',new_post_path(channel_id: @channel)%>
+    <li class="waves-effect waves-pink btn">
+<%= link_to 'New Post',new_post_path(channel_id: @channel)%></li>
 <%end%>
+
+
+  <li class="waves-effect waves-pink btn">
+    <%= link_to 'Back', :back %>
+  </li>
+
   <div class="list">
 
 <% @channel.posts.each do |post| %>
 
-    <div class="channelname">
-      <h2 class="title">Title|<%= link_to post.title, post_path(post) %></h2>
-      <h3>User|
+
+
+
+        <div class ="cardContraints">
+          <div class="row">
+            <div class="col s12 m6">
+              <div class="card">
+                <div class="card-image">
+                  <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
+
+
+
+                  <span class="card-title"> <li class="waves-effect waves-pink btn blue">Title|<%= link_to post.title, post_path(post) %></li></span>
+
+
+                  <a class="btn-floating halfway-fab waves-effect waves-pink red" ><i class="material-icons">add</i></a>
+
+                </div>
+                <div class="card-content">
+                  <p class="description"><%= post.content %></p>
+                </div>
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+        </div>
+
+
         <% if User.exists?(id: post.user_id)%>
-            <%= link_to User.find(post.user_id).email, user_path(post.user_id)%>
+            <li class="waves-effect waves-pink btn orange "><%= link_to User.find(post.user_id).email, user_path(post.user_id)%></li>
         <%else%>
-           [deleted]
+            <li class="waves-effect waves-pink btn orange">[ user deleted]</li>
         <%end%>
-      </h3>
-      <p class="description"><%= post.content %></p>
-      <% if can? :manage, post%>
-        <p><%= link_to 'Edit', edit_post_path(post) %></p>
-        <p><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      <%end%>
-    </div>
-<% end %>
+
+
+        <% if can? :manage, post%>
+            <li class="waves-effect waves-pink btn orange">
+              <%= link_to 'Delete Post', post,method: :delete, data: {confirm: 'Are you sure?'}%></li>
+            <li class="waves-effect waves-pink btn orange">
+              <%= link_to 'Edit Post', edit_post_path(post) %></li>
+        <%end%>
+  <% end %>
 </div>
-<%if can? :update, Channel%>
-<%= link_to 'Edit', edit_channel_path(@channel) %> |
-<%end%>
-<%= link_to 'Back', :back %>
+
+
+</div>
