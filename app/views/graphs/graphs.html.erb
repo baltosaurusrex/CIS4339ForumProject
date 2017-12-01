@@ -8,5 +8,24 @@
 
 <h1>Posts per user, per day</h1>
 <%= line_chart Post.joins(:user).group(:email).group_by_day('posts.created_at').count%>
+  </br>
+  <h1>Posts</h1>
+  <!--post title, post date, user, channel-->
+  <table>
+    <tr>
+      <th>Post title</th>
+      <th>Created at</th>
+      <th>User</th>
+      <th>Channel</th>
+    </tr>
+    <% Post.all.each do |x|%>
+      <tr>
+        <td><%= link_to x.title,x%></td>
+        <td><%= x.created_at.strftime("%d %B %Y")%></td>
+        <td><%= link_to x.user.email, user_path(x.user_id)%></td>
+        <td><%= link_to x.channel.name, channel_path(x.channel_id)%></td>
+      </tr>
+    <%end%>
+  </table>
 
 </div>

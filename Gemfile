@@ -46,7 +46,7 @@ gem 'cancancan', '~> 2.0'
 #gem 'rails_admin', '>= 1.0.0.rc'
 gem 'rails_admin'
 
-gem 'sortable-table', github: 'caselle/sortable-table'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
