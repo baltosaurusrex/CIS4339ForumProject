@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-
   helper_method :search
+
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def search
    #debugger
@@ -86,7 +86,5 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:channel_id,:title, :content,:user_id)
     end
-
-
 end
 

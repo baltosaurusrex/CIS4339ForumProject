@@ -15,7 +15,7 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  BM                     :boolean
+#  BM                     :boolean          default(FALSE)
 #  confirmation_token     :string(128)
 #  remember_token         :string(128)
 #  CM                     :boolean
