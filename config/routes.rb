@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get 'users/import'
 
   root to: 'pages#home'
 
@@ -11,6 +10,8 @@ Rails.application.routes.draw do
   resources :users do
     collection { post :import}
   end
+
+  get 'users/import'
 
   post 'posts/search' => 'posts#search', as: 'search_posts'
   get 'all_post_updates/:id' => 'post_updates#index', as: 'all_post_updates'
