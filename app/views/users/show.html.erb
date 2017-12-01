@@ -3,12 +3,21 @@
 <%= @user.email %></strong>
   <li class="waves-effect waves-pink btn">
     <%= link_to "Change Password", edit_user_registration_path(@user) %></li>
-<div id="Charts">
+<div>
   <% if can? :manage, User%>
       <li class="waves-effect waves-pink btn">
         <%= button_to "Admin", rails_admin_path ,:method => :get%>
       </li>
   <%end%>
+  <%if can? :manage, User%>
+
+      <%= form_tag users_import_path, multipart:true do %>
+          <li class="waves-effect waves-light btn"> <%= file_field_tag :file , :accept => 'csv'%></li>
+
+          <li class="waves-effect waves-light btn"><%= submit_tag "Import CVS"%></li>
+      <% end %>
+
+  <% end %>
 </div>
 
 <div id="topics">
