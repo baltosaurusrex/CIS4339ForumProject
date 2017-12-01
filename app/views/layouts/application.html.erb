@@ -1,29 +1,18 @@
 <!DOCTYPE html>
 <html>
 
-
-
   <head>
     <!--<title>WERL'd Intranet Forum</title>-->
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%-# stylesheet_link_tag    "application", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
-
-
-
 
     <nav>
       <div class="nav-wrapper">
         <%= link_to "WERL'd Home", root_url,class: "navbar-brand" %>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-
-
-
-
-
 
           <!--search--><li>
           <%if  controller_name == 'channels' && controller.action_name =='show'%>

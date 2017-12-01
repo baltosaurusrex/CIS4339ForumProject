@@ -4,7 +4,11 @@
   <li class="waves-effect waves-pink btn">
     <%= link_to "Change Password", edit_user_registration_path(@user) %></li>
 <div id="Charts">
-
+  <% if can? :manage, User%>
+      <li class="waves-effect waves-pink btn">
+        <%= button_to "Admin", rails_admin_path ,:method => :get%>
+      </li>
+  <%end%>
 </div>
 
 <div id="topics">

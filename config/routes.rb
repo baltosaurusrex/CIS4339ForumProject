@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'pages/home'
 
   get 'graph' => 'graphs#show', as: 'reports'
-
+  get 'management' => 'user_management#show', as: 'user_management'
   devise_for :users, controllers: {
       sessions: 'users/sessions'
   }

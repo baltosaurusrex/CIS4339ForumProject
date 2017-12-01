@@ -5,11 +5,7 @@
 
 <div class="list">
   <!--railsadmin-->
-  <% if can? :manage, User%>
-      <li class="waves-effect waves-pink btn">
-        <%= button_to "Admin", rails_admin_path ,:method => :get%>
-      </li>
-  <%end%>
+
 
   <%if can? :create, Channel%>
       <li class="waves-effect waves-pink btn">
