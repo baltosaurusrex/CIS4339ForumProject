@@ -78,10 +78,10 @@
       </div>
       <div class="card-stacked">
         <div class="card-content">
-          <p><%= comment.content %></p>
+
+          <li2><%=link_to comment.content,user_path(comment.user_id) %></li2>
         </div>
         <div class="card-action">
-          <ul id="myUL">
             <% if User.exists?(id: comment.user_id)%>
 
                 <li class="waves-effect waves-pink btn purple">
@@ -92,7 +92,6 @@
             <%else%>
                 [deleted]
             <%end%>
-          </ul>
         </div>
       </div>
 
@@ -147,7 +146,7 @@
         // Loop through all list items, and hide those who don't match the search query
         for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByTagName("a")[0];
-            a = a.replace(/ +/g, "");
+
             if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 li[i].style.display = "";
                 ul2[i].style.display ="";

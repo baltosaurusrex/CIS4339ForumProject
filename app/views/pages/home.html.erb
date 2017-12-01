@@ -19,7 +19,7 @@
   <%end%>
 
 
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for channels.." title="Type in a name">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for channels title..." title="Type in a name">
 
 
    <ul id="myUL">
@@ -38,12 +38,10 @@
 
                  <span class="card-title">
 
-                   <ul id="myUL">
                      <li2 class="waves-effect waves-pink btn blue">
                    <%= link_to x.name, channel_path(x.id)%>
                      </li2>
 
-                   </ul>
                  </span>
 
 
@@ -93,7 +91,6 @@
            // Loop through all list items, and hide those who don't match the search query
            for (i = 0; i < li.length; i++) {
                a = li[i].getElementsByTagName("a")[0];
-               x = p2[i].getElementsByTagName("p")[0];
                if ((a.innerHTML.toUpperCase().indexOf(filter) > -1)) {
                    li[i].style.display = "";
                    ul2[i].style.display ="";
