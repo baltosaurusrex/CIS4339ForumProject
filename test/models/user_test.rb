@@ -24,7 +24,26 @@
 
 require 'test_helper'
 
+
+
 class UserTest < ActiveSupport::TestCase
+
+  setup do
+    @encrypted_password = encrypted_password.new
+  end
+
+  test "password cannot contain more than 32 characters" do
+    assert(@encrypted_password.invalid?,"Password must contain no more than 32 characters.")
+  end
+
+  test "password cannot be blank" do
+    assert(@encrypted_password.invalid?,"Password cannot be blank.")
+  end
+
+  test "requires CSV" do
+    require 'csv'
+  end
+
   # test "the truth" do
   #   assert true
   # end

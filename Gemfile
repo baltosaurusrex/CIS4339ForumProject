@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
  gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
   #adding cocoon, cause this is actually really useful
+gem "highcharts-rails"
+# The gem version mirrors the included version of Highcharts
 gem 'cocoon'
 
 gem 'chartkick'

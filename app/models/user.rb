@@ -27,6 +27,7 @@ class User < ApplicationRecord
   require 'csv'
 
 
+
   def self.import(file)
 
     #params[:file].content_type == 'text/csv'
@@ -43,5 +44,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+
+  validates :name, presence: true, length: {maximum: 32}
 
 end
