@@ -16,5 +16,5 @@ class Post < ApplicationRecord
   belongs_to :channel
   belongs_to :user
   validates_presence_of :title,:content
-  validates :name, presence: true, length: {minimum: 1}
+  validates :title:, presence: true, length: {minimum: 1}
 end

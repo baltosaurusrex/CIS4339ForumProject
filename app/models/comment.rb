@@ -14,5 +14,5 @@
 class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
-  validates :name, presence: true, length: {minimum: 1}
+  validates :user, presence: true, length: {minimum: 1}
 end
