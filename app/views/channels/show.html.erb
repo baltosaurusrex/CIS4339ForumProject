@@ -2,61 +2,89 @@
 <div class="container">
 
   <p id="notice"><%= notice %></p>
-<h1>
-  <%= @channel.name %>
-</h1>
 
-<p>
-  <%= @channel.description %>
-</p>
-<%if can? :create, Post%>
-    <li class="waves-effect waves-pink btn">
-<%= link_to 'New Post',new_post_path(channel_id: @channel)%></li>
-<%end%>
+  <div class ="cardContraints">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image">
+            <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
 
 
-  <li class="waves-effect waves-pink btn">
-    <%= link_to 'Back', :back %>
-  </li>
 
-  <div class="list">
+            <span class="card-title">
 
+                    <li  class="waves-effect waves-pink btn blue" ><%= @channel.name %>
+                    </li>
+
+                  </span>
+
+
+
+          </div>
+          <div class="card-content"><strong>
+            <p class="description"><%= @channel.description %></p></strong>
+          </div>
+
+        </div>
+
+        <%if can? :create, Post%>
+            <li class="waves-effect waves-pink btn">
+              <%= link_to 'New Post',new_post_path(channel_id: @channel)%></li>
+        <%end%>
+
+
+        <li class="waves-effect waves-pink btn">
+          <%= link_to 'Back', :back %>
+        </li>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <ul class="list">
+
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for posts..." title="Type in a name">
+
+
+      <ul id="myUL">
 <% @channel.posts.each do |post| %>
 
 
 
+  <div2>
 
-        <div class ="cardContraints">
-          <div class="row">
-            <div class="col s12 m6">
-              <div class="card">
-                <div class="card-image">
-                  <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
+    <div class="col s12 m7">
 
-
-
-                  <span class="card-title"> <li class="waves-effect waves-pink btn blue">Title|<%= link_to post.title, post_path(post) %></li></span>
-
-
-                  <a class="btn-floating halfway-fab waves-effect waves-pink red" ><i class="material-icons">add</i></a>
-
-                </div>
-                <div class="card-content">
-                  <p class="description"><%= post.content %></p>
-                </div>
-
-              </div>
-
-
-
-
-            </div>
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="https://lorempixel.com/100/190/nature/8">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p><%= post.content %></p>
+          </div>
+          <div class="card-action">
+            <ul id="myUL">
+              <li2 class="waves-effect waves-pink btn blue">Title|<%= link_to post.title, post_path(post) %>
+              </li2>
+            </ul>
           </div>
         </div>
+      </div>
+    </div>
+
+
 
 
         <% if User.exists?(id: post.user_id)%>
-            <li class="waves-effect waves-pink btn orange "><%= link_to User.find(post.user_id).email, user_path(post.user_id)%></li>
+            <li class="waves-effect waves-pink btn purple "><%= link_to User.find(post.user_id).email, user_path(post.user_id)%></li>
         <%else%>
             <li class="waves-effect waves-pink btn orange">[ user deleted]</li>
         <%end%>
@@ -68,8 +96,39 @@
             <li class="waves-effect waves-pink btn orange">
               <%= link_to 'Edit Post', edit_post_path(post) %></li>
         <%end%>
+
+  </div2>
   <% end %>
-</div>
 
 
-</div>
+  </ul>
+
+
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i, ul2;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName('li2');
+        //ul2 = document.getElementById('myCardDIV');
+
+        ul2 = ul.getElementsByTagName('div2');
+
+
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+                ul2[i].style.display ="";
+            } else {
+                li[i].style.display = "none";
+                ul2[i].style.display ="none";
+            }
+        }
+
+    }
+</script>

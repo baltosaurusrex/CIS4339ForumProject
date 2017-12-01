@@ -1,93 +1,161 @@
 <div class="container">
 <p id="notice"><%= notice %></p>
 
-
-
-<h2>
-  <%= @post.title %>
-</h2>
-  <p>
-  <% if User.exists?(id: @post.user_id)%>
-
-        <%= User.find(@post.user_id).email%>
-  <%else%>
-    [deleted]
-  <%end%>
-  </p>
-
-  <p class="post-content">
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-  <%if can? :update, Comment%>
-      <li class="waves-effect waves-pink btn">
-        <%= link_to 'Edit Post', edit_post_path(@post) %></li>
-  <%end%>
-  <li class="waves-effect waves-pink btn">
-    <%= link_to 'Back', channel_path(@post.channel_id) %></li>
-  <%if can? :create, Comment%>
-      <li class="waves-effect waves-pink btn">
-        <%= link_to 'Reply', new_comment_path(post_id: @post)%></li>
-  <%end%>
+  <div class ="cardContraints">
+    <div class="row">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image">
+            <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
 
 
 
+            <span class="card-title">
 
-  <% @post.comment.each do |comment| %>
+                    <li  class="waves-effect waves-pink btn blue" ><%= @post.title %>
+                    </li>
 
-
-
-      <div class ="cardContraints">
-        <div class="row">
-          <div class="col s12 m6">
-            <div class="card">
-              <div class="card-image">
-                <img src="http://www.uh.edu/marketing/brand/graphic-standards/_img/logo-athletics-uh-red.png">
-
-
-                <span class="card-title"> <% if User.exists?(id: comment.user_id)%>
-            <li class="waves-effect waves-pink btn blue">
-              <%= link_to User.find(comment.user_id).email,user_path(comment.user_id) %></li>
-          <%else%>
-            [deleted]
-          <%end%>
                   </span>
-                <a class="btn-floating halfway-fab waves-effect waves-pink red" ><i class="material-icons">add</i></a>
 
-              </div>
-              <div class="card-content">
-                <p class="description"><%= comment.content %></p>
-              </div>
-
-            </div>
 
 
           </div>
+          <div class="card-content">
+            <p class="description"><strong>Content:</strong>
+              <%= @post.content %></p>
+          </div>
+          <li  class="waves-effect waves-pink btn purple" >
+            <% if User.exists?(id: @post.user_id)%>
 
-        </div>
-        <% if can? :manage, comment%>
-            <li class="waves-effect waves-pink btn orange">
-              <%= link_to 'Edit Reply', edit_comment_path(comment) %></li>
-            <li class="waves-effect waves-pink btn orange">
-              <%= link_to 'Destroy Reply', comment, method: :delete, data: { confirm: 'Are you sure?' } %></li>
-            <%if can? :create, Comment%>
-                <li class="waves-effect waves-pink btn orange">
-                  <%= link_to 'Reply', new_comment_path(post_id: @post)%></li>
+                <%= User.find(@post.user_id).email%>
+            <%else%>
+                [deleted]
             <%end%>
+
+          </li>
+        </div>
+
+
+
+
+        <%if can? :update, Comment%>
+            <li class="waves-effect waves-pink btn">
+              <%= link_to 'Edit Post', edit_post_path(@post) %></li>
         <%end%>
+        <li class="waves-effect waves-pink btn">
+          <%= link_to 'Back', channel_path(@post.channel_id) %></li>
+        <%if can? :create, Comment%>
+            <li class="waves-effect waves-pink btn">
+              <%= link_to 'Reply', new_comment_path(post_id: @post)%></li>
+        <%end%>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for comments..." title="Type in a name">
+
+
+  <ul id="myUL">
+  <% @post.comment.each do |comment| %>
+
+
+<div2>
+  <div class ="cardContraints">
+  <div class="col s12 m7">
+
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="https://lorempixel.com/100/190/nature/10">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p><%= comment.content %></p>
+        </div>
+        <div class="card-action">
+          <ul id="myUL">
+            <% if User.exists?(id: comment.user_id)%>
+
+                <li class="waves-effect waves-pink btn purple">
+                  <%= link_to User.find(comment.user_id).email,user_path(comment.user_id) %>
+
+                </li>
+
+            <%else%>
+                [deleted]
+            <%end%>
+          </ul>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+    <% if can? :manage, comment%>
+        <li class="waves-effect waves-pink btn orange">
+          <%= link_to 'Edit Reply', edit_comment_path(comment) %></li>
+        <li class="waves-effect waves-pink btn orange">
+          <%= link_to 'Destroy Reply', comment, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        <%if can? :create, Comment%>
+            <li class="waves-effect waves-pink btn orange">
+              <%= link_to 'Reply', new_comment_path(post_id: @post)%></li>
+        <%end%>
+    <%end%>
+
+
+
+
+
       </div>
 
 
 
-
+</div2>
 
   <% end %>
 
-
+  </ul>
 
 
 
 <!--Add Board Manager-->
 
 </div>
+
+<script>
+    function myFunction() {
+        // Declare variables
+        var input, filter, ul, li, a, i, ul2;
+        input = document.getElementById('myInput');
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName('li2');
+        //ul2 = document.getElementById('myCardDIV');
+
+        ul2 = ul.getElementsByTagName('div2');
+
+
+
+        // Loop through all list items, and hide those who don't match the search query
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            a = a.replace(/ +/g, "");
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+                ul2[i].style.display ="";
+            } else {
+                li[i].style.display = "none";
+                ul2[i].style.display ="none";
+            }
+        }
+
+    }
+</script>

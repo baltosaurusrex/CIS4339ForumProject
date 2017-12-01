@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+
+
   <head>
     <!--<title>WERL'd Intranet Forum</title>-->
     <%= csrf_meta_tags %>
@@ -9,51 +11,41 @@
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
 
+
+
+
+    <nav>
+      <div class="nav-wrapper">
+        <%= link_to "WERL'd Home", root_url,class: "navbar-brand" %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+
+
+
+
+
+
+
+          <!--sign in/out-->
+
+          <% if user_signed_in? %>
+              <li>
+                <%= link_to current_user.email, user_path(current_user.id)%>
+              </li>
+              <li>
+                <%= link_to "Logout", destroy_user_session_path%>
+              </li>
+          <%else %>
+
+              <li>
+                <%= link_to "Login", new_user_session_path %>
+              </li>
+          <%end %>
+
+        </ul>
+      </div>
+    </nav>
   <body>
-  <nav>
-    <div class="nav-wrapper">
-      <%= link_to "WERL'd Home", root_url,class: "navbar-brand" %>
-
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-        <!--search-->
-        <li>
-          <%if  controller_name == 'channels' && controller.action_name =='show'%>
-              <%= form_tag search_posts_path do%>
-                  <input Class="search full-width" id="searchbar" name="query" placeholder="Search Post" type="text" autocomplete="off">
-              <%end%>
-
-          <%elsif  controller_name == 'channels'|| current_page?(root_path)%>
-              <%= form_tag search_channels_path do %>
-                  <input Class="search full-width" id="searchbar" name="query" placeholder="Search Channel" type="text" autocomplete="off">
-              <%end%>
-
-          <%elsif controller_name == 'posts' && controller.action_name == 'show'%>
-              <%= form_tag search_posts_path do%>
-                  <input Class="search full-width" id="searchbar" name="query" placeholder="Search comments" type="text" autocomplete="off">
-              <%end%>
-
-          <%end%>
-        </li>
-
-        <!--sign in/out-->
-        <% if user_signed_in? %>
-            <li>
-              <%= link_to current_user.email, user_path(current_user.id)%>
-            </li>
-            <li>
-              <%= link_to "Logout", destroy_user_session_path%>
-            </li>
-        <%else %>
-            <li>
-              <%= link_to "Login", new_user_session_path %>
-            </li>
-        <%end %>
-
-      </ul>
-    </div>
-  </nav>
-
     <main>
 
       <div class="container">

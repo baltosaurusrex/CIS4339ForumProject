@@ -73,11 +73,13 @@ ul.hmenu li {
   background-color: palevioletred;
   color: white;
 }
-.list .cardContraints{
+ .cardContraints{
   margin: 10px;
   padding:10px;
 
 }
+
+
  .list .card .card-title {
    font-weight: bold;
   color: black;
@@ -122,5 +124,20 @@ a:visited{
   of the button to still show through. */
   background-color: rgba(255, 102, 102, 1);
 }
+#myUL {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#myCardDIV {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
 
+#myCardNameLI {
+  list-style-type: none;
+  padding: 10;
+  margin: 10;
+}
 
